@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS public.patient
 (
-    patient_id integer NOT NULL DEFAULT nextval('patient_patient_id_seq'::regclass),
+    patient_id integer,
     user_id integer,
     first_name character varying(64) COLLATE pg_catalog."default",
     last_name character varying(64) COLLATE pg_catalog."default",
