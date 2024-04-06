@@ -8,6 +8,7 @@
       <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }">My Appointments</router-link>&nbsp;|&nbsp;
       <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link> &nbsp;|&nbsp;
       <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <!-- ^^^ we need to make the login and logout TOGGLE ! ^^^ -->
 
     </div>
     <router-view />
