@@ -1,27 +1,24 @@
 <template>
   <div id="login">
     <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
-      </div>
+      <p></p>
       <div role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
+      </div> <!-- ^^^ move this later -->
+      <h1 id="login-header">LOGIN</h1>
+      <div class="form-input-group">
+        <input type="text" id="username-input-box" v-model="user.username" required autofocus placeholder=" Username" />
       </div>
       <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+        <input type="password" id="password-input-box" v-model="user.password" required placeholder=" Password"/>
       </div>
 
-      <!--added login method to submit button-->
-      
-      <button type="submit" v-on:click="login()">Sign in</button>
+      <div role="alert" v-if="invalidCredentials">
+        Invalid username and password
+      </div>
+      <p><button id="submit-button" type="submit" v-on:click="login()">Login</button></p>
       <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link class="register-link" v-bind:to="{ name: 'register' }">Register</router-link></p>
     </form>
   </div>
 </template>
@@ -67,7 +64,16 @@ export default {
 .form-input-group {
   margin-bottom: 1rem;
 }
-label {
-  margin-right: 0.5rem;
+#submit-button {
+  font-size: 8pt;
+}
+.register-link {
+  color: #000000;
+  text-decoration: none;
+}
+#login-header {
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 22pt;
 }
 </style>
