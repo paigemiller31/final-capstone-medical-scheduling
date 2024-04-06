@@ -1,28 +1,36 @@
 <template>
   <body>
-    <div id="login">
+    <div>
       <form v-on:submit.prevent="login">
-        <p></p>
         <div role="alert" v-if="this.$route.query.registration">
           Thank you for registering, please sign in.
         </div> <!-- ^^^ move this later -->
-        <h1 id="login-header">LOGIN</h1>
-        <div class="form-input-group">
-          <input type="text" class="login-input-box" v-model="user.username" required autofocus placeholder=" Username" />
-        </div>
-        <div class="form-input-group">
-          <input type="password" class="login-input-box" v-model="user.password" required placeholder=" Password" />
+
+        <div class="container">
+
+          <div class="login-component">
+            <h1 id="login-header">LOGIN</h1>
+            <div class="form-input-group">
+              <input type="text" class="login-input-box" v-model="user.username" required autofocus
+                placeholder=" Username" />
+            </div>
+            <div class="form-input-group">
+              <input type="password" class="login-input-box" v-model="user.password" required placeholder=" Password" />
+              <div role="alert" v-if="invalidCredentials">
+                Invalid username and password
+              </div>
+              <p><button id="submit-button" type="submit" v-on:click="login()">Submit</button></p>
+            </div>
+          </div>
+
+
+          <div class="register-component">
+            <p>Not registered yet?</p>
+            <p><button id="submit-button" type="submit" v-on:click="register()">Create an
+                Account</button></p>
+          </div>
         </div>
 
-        <div role="alert" v-if="invalidCredentials">
-          Invalid username and password
-        </div>
-        <p class="button-alignment"><button id="submit-button" type="submit" v-on:click="login()">Submit</button></p>
-        <div id="registration">
-          <p class="button-alignment">Not registered yet?</p>
-          <p class="button-alignment"><button id="submit-button" type="submit" v-on:click="register()">Create an
-              Account</button></p>
-        </div>
       </form>
     </div>
   </body>
@@ -69,6 +77,29 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "login"
+    "register"
+  ;
+  height: 100vh;
+  justify-content: center;
+}
+
+.login-component {
+  grid-area: login;
+  justify-items: center;
+  align-items: center;
+}
+
+.register-component {
+  grid-area: register;
+  align-items: center;
+  justify-items: end;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11pt;
@@ -82,9 +113,6 @@ body {
 
 #login-header {
   margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 22pt;
@@ -92,9 +120,7 @@ body {
 
 #login {
   height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 input::placeholder {
@@ -104,9 +130,6 @@ input::placeholder {
 }
 
 .register-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 8pt;
   text-transform: uppercase;
@@ -129,12 +152,6 @@ input::placeholder {
   border-style: none;
   border-bottom: solid 1px #000000;
   padding: .1rem;
-}
-
-.button-alignment {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .login-input-box {
