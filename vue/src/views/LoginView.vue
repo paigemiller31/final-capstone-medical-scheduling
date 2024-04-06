@@ -7,18 +7,18 @@
       </div> <!-- ^^^ move this later -->
       <h1 id="login-header">LOGIN</h1>
       <div class="form-input-group">
-        <input type="text" id="username-input-box" v-model="user.username" required autofocus placeholder=" Username" />
+        <input type="text" class="login-input-box" v-model="user.username" required autofocus placeholder=" Username" />
       </div>
       <div class="form-input-group">
-        <input type="password" id="password-input-box" v-model="user.password" required placeholder=" Password"/>
+        <input type="password" class="login-input-box" v-model="user.password" required placeholder=" Password"/>
       </div>
 
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password
       </div>
-      <p><button id="submit-button" type="submit" v-on:click="login()">Login</button></p>
-      <p>
-      <router-link class="register-link" v-bind:to="{ name: 'register' }">Register</router-link></p>
+      <p class="button-alignment"><button id="submit-button" type="submit" v-on:click="login()">Submit</button></p>
+      <p class="button-alignment">Not registered yet?</p>
+      <p class="button-alignment"><button id="submit-button" type="submit" v-on:click="register()">Create an Account</button></p>
     </form>
   </div>
 </template>
@@ -55,6 +55,9 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+    register() {
+      this.$router.push("/register");
     }
   }
 };
@@ -62,18 +65,66 @@ export default {
 
 <style scoped>
 .form-input-group {
-  margin-bottom: 1rem;
-}
-#submit-button {
-  font-size: 8pt;
-}
-.register-link {
-  color: #000000;
-  text-decoration: none;
+  margin-bottom: 2rem;
 }
 #login-header {
-  font-family:Arial, Helvetica, sans-serif;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 22pt;
 }
+#login {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input::placeholder {
+  font-family: Arial, Helvetica, sans-serif;  
+  font-size: 7pt;
+  color: rgb(210, 210, 210);  
+  }
+.register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 3pt;
+  background-color: transparent;
+  border-style: none;
+  border-bottom: solid 1px #000000;
+  padding: .1rem;
+  color: #000000;
+  text-decoration: none;
+  max-width: 200px;
+
+}
+#submit-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 3pt;
+  background-color: transparent;
+  border-style: none;
+  border-bottom: solid 1px #000000;
+  padding: .1rem;
+}
+.button-alignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-input-box {
+  width: 250px;
+  padding: 7px;
+  border-style: none;
+  border-radius: 3px;
+  outline: none;
+}
+
 </style>
