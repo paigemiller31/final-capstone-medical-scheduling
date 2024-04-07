@@ -61,7 +61,7 @@ const routes = [
     name: "patient-registration",
     component: PatientRegistrationView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
@@ -69,7 +69,7 @@ const routes = [
     name: "doctor-registration",
     component: DoctorRegistrationView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {

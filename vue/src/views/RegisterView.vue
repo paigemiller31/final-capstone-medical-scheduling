@@ -19,7 +19,8 @@
           {{ registrationErrorMsg }}
         </div>
         <!-- added register method - what is it doing ... ? -->
-        <p class="button-alignment"><button id="button" type="submit" v-on:click="register()">Submit</button></p>
+        <p class="button-alignment"><button id="button" type="submit" v-on:click="registerAsPatient()">Register as Patient</button></p>
+        <p class="button-alignment"><button id="button" type="submit" v-on:click="registerAsDoctor()">Register as Doctor</button></p>
         </div>
         <div class="login-component">
           <p>Already registered?</p>
@@ -48,7 +49,7 @@ export default {
     };
   },
   methods: {
-    register() {
+    registerAsPatient() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password entries do not match.';
@@ -58,7 +59,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
+                path: '/patientregistration',
                 query: { registration: 'success' },
               });
             }
@@ -73,6 +74,33 @@ export default {
           });
       }
     },
+
+    registerAsDoctor() {
+      if (this.user.password != this.user.confirmPassword) {
+        this.registrationErrors = true;
+        this.registrationErrorMsg = 'Password entries do not match.';
+      } else {
+        authService
+          .register(this.user)
+          .then((response) => {
+            if (response.status == 201) {
+              this.$router.push({
+                path: '/doctorregistration',
+                query: { registration: 'success' },
+              });
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+            this.registrationErrors = true;
+            if (response.status === 400) {
+              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              // ^^^^^^^^^^^^^^ change dis
+            }
+          });
+      }
+    },
+
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
