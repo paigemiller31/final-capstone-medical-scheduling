@@ -2,18 +2,28 @@
 
 -- DROP TABLE public.patient;
 
-CREATE TABLE IF NOT EXISTS public.patient
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS patient;
+
+
+CREATE TABLE IF NOT EXISTS patient
 (
-    patient_id integer,
-    user_id integer,
-    first_name character varying(64) COLLATE pg_catalog."default",
-    last_name character varying(64) COLLATE pg_catalog."default",
-    address character varying(256) COLLATE pg_catalog."default",
-    email character varying(64) COLLATE pg_catalog."default",
-    phone_number character varying(15) COLLATE pg_catalog."default"
-)
+    patient_id int,
+    user_id int,
+    first_name VARCHAR (64),
+    last_name VARCHAR (64) ,
+	phone_number VARCHAR(15),
+    email VARCHAR(64),
+	email_reminder BOOLEAN,
+	address_line_1 VARCHAR (128) ,
+	address_line_2   VARCHAR (128),
+	city  VARCHAR (64),
+	state VARCHAR (64),
+	zip_code VARCHAR (15)
 
-TABLESPACE pg_default;
+);
 
-ALTER TABLE public.patient
-    OWNER to postgres;
+GRANT UPDATE, DELETE, INSERT, SELECT ON TABLE public.patient TO final_capstone_appuser;
+
+COMMIT TRANSACTION;
