@@ -5,11 +5,9 @@
         <div role="alert" v-if="this.$route.query.registration">
           Thank you for registering, please sign in.
         </div> <!-- ^^^ move this later -->
-
         <div class="container">
-
           <div class="login-component">
-            <h1 id="login-header">LOGIN</h1>
+            <h1 id="login-header">Login</h1>
             <div class="form-input-group">
               <input type="text" class="login-input-box" v-model="user.username" required autofocus
                 placeholder=" Username" />
@@ -17,20 +15,17 @@
             <div class="form-input-group">
               <input type="password" class="login-input-box" v-model="user.password" required placeholder=" Password" />
               <div role="alert" v-if="invalidCredentials">
-                Invalid username and password
+                <p id="invalid-entry">Invalid username and password</p>
               </div>
-              <p><button id="submit-button" type="submit" v-on:click="login()">Submit</button></p>
+              <p class="button-alignment"><button id="button" type="submit" v-on:click="login()">Submit</button></p>
             </div>
           </div>
-
-
           <div class="register-component">
             <p>Not registered yet?</p>
-            <p><button id="submit-button" type="submit" v-on:click="register()">Create an
-                Account</button></p>
+            <button id="button" type="submit" v-on:click="register()">Create an
+              Account</button>
           </div>
         </div>
-
       </form>
     </div>
   </body>
@@ -79,25 +74,31 @@ export default {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   grid-template-areas:
-    "login"
-    "register"
+    ". . ."
+    ". login ."
+    ". register ."
   ;
-  height: 100vh;
-  justify-content: center;
+  height: 90vh;
 }
 
 .login-component {
   grid-area: login;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150px;
 }
 
 .register-component {
   grid-area: register;
   align-items: center;
-  justify-items: end;
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -116,11 +117,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 22pt;
-}
-
-#login {
-  height: 80vh;
-
+  text-transform: uppercase;
 }
 
 input::placeholder {
@@ -129,7 +126,7 @@ input::placeholder {
   color: rgb(210, 210, 210);
 }
 
-.register-link {
+#button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 8pt;
   text-transform: uppercase;
@@ -138,34 +135,32 @@ input::placeholder {
   border-style: none;
   border-bottom: solid 1px #000000;
   padding: .1rem;
-  color: #000000;
-  text-decoration: none;
-  max-width: 200px;
 }
 
-#submit-button {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8pt;
-  text-transform: uppercase;
-  letter-spacing: 3pt;
-  background-color: transparent;
-  border-style: none;
-  border-bottom: solid 1px #000000;
-  padding: .1rem;
+#button:hover {
+  cursor: pointer;
+}
+
+.button-alignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 22px;
 }
 
 .login-input-box {
   width: 250px;
+  height: 20px;
   padding: 7px;
   border-style: none;
   border-radius: 3px;
   outline: none;
 }
 
-#registration {
-  margin-top: auto;
-  height: 100px;
+#invalid-entry {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 </style>
-
-<!-- THOUGHT: hover functionality over SUBMIT and CREATE AN ACCOUNT -->

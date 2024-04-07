@@ -6,6 +6,8 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import PatientRegistrationView from '../views/PatientRegistrationView.vue';
+import DoctorRegistrationView from '../views/DoctorRegistrationView.vue';
 import OfficesView from '../views/OfficesView.vue';
 import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
 import MyAppointmentsView from '../views/MyAppointmentsView.vue';
@@ -52,6 +54,22 @@ const routes = [
     component: RegisterView,
     meta: {
       requiresAuth: false
+    }
+  },
+   {
+    path: "/patientregistration",
+    name: "patient-registration",
+    component: PatientRegistrationView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/doctorregistration",
+    name: "doctor-registration",
+    component: DoctorRegistrationView,
+    meta: {
+      requiresAuth: true
     }
   },
   {

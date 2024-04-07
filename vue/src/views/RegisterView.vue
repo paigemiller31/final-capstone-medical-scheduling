@@ -1,26 +1,34 @@
 <template>
-  <div id="register" class="text-center">
-    <form v-on:submit.prevent="register">
-      <h1>Create Account</h1>
-      <div role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
+  <body>
+    <div id="register" class="text-center">
+      <form v-on:submit.prevent="register">
+        <div class="container">
+          <div class="register-component">
+        <h1 id="register-header">Register</h1>
+        <div class="form-input-group">
+          <input type="text" class="register-input-box" v-model="user.username" required autofocus placeholder=" Username" />
+        </div>
+        <div class="form-input-group">
+          <input type="password" class="register-input-box" v-model="user.password" required placeholder=" Password" />
+        </div>
+        <div class="form-input-group">
+          <input type="password" class="register-input-box" v-model="user.confirmPassword" required
+            placeholder=" Confirm Password" />
+        </div>
+        <div role="alert" v-if="registrationErrors">
+          {{ registrationErrorMsg }}
+        </div>
+        <!-- added register method - what is it doing ... ? -->
+        <p class="button-alignment"><button id="button" type="submit" v-on:click="register()">Submit</button></p>
+        </div>
+        <div class="login-component">
+          <p>Already registered?</p>
+          <router-link v-bind:to="{ name: 'login' }"><button id="button" type="submit">Login</button></router-link>
+        </div>
       </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
-      </div>
-      <button type="submit">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-    </form>
-  </div>
+      </form>
+    </div>
+  </body>
 </template>
 
 <script>
@@ -43,7 +51,7 @@ export default {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = 'Password entries do not match.';
       } else {
         authService
           .register(this.user)
@@ -60,6 +68,7 @@ export default {
             this.registrationErrors = true;
             if (response.status === 400) {
               this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              // ^^^^^^^^^^^^^^ change dis
             }
           });
       }
@@ -73,10 +82,94 @@ export default {
 </script>
 
 <style scoped>
-.form-input-group {
-  margin-bottom: 1rem;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-areas:
+    ". . ."
+    ". register ."
+    ". login ."
+  ;
+  height: 90vh;
 }
-label {
-  margin-right: 0.5rem;
+
+.register-component {
+  grid-area: register;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 150px;
+}
+
+.login-component {
+  grid-area: login;
+  align-items: center;
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  letter-spacing: .2pt;
+  text-shadow: 0.1px 0.1px 0.1px;
+}
+
+.form-input-group {
+  margin-bottom: 2rem;
+}
+
+#register-header {
+  margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 22pt;
+  text-transform: uppercase;
+}
+
+input::placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7pt;
+  color: rgb(210, 210, 210);
+}
+
+#button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 3pt;
+  background-color: transparent;
+  border-style: none;
+  border-bottom: solid 1px #000000;
+  padding: .1rem;
+}
+
+#button:hover {
+  cursor: pointer;
+}
+
+.button-alignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-input-box {
+  width: 250px;
+  height: 20px;
+  padding: 7px;
+  border-style: none;
+  border-radius: 3px;
+  outline: none;
+}
+
+#invalid-entry {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 </style>
