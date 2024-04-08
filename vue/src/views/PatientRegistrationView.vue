@@ -203,6 +203,7 @@ export default {
     flex-basis: 100%;
     justify-content: center;
     align-items: center;
+    
 }
 
 #city-state-zip-flex-box {
