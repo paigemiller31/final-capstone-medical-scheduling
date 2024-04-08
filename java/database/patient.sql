@@ -6,7 +6,6 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS patient;
 
-
 CREATE TABLE IF NOT EXISTS patient
 (
     patient_id int,
