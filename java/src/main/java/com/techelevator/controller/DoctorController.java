@@ -32,7 +32,7 @@ public class DoctorController {
     @RequestMapping(path = "/doctor", method = RequestMethod.POST)
     public void createTransfer(@RequestBody Doctor newdoctor) {
         try {
-            doctorDao.createDoctor( doctorDao);
+            doctorDao.createDoctor(newdoctor);
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR , "doctor API test failed.");
         }
