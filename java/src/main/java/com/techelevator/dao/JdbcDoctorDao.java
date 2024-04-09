@@ -36,8 +36,6 @@ public class JdbcDoctorDao implements DoctorDao {
     @Override
     public void createDoctor(Doctor doctor){
 
-        Doctor d =  null;
-
         String sql =
                 " INSERT INTO doctor ( first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
                         " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING doctor_id ; " ;
@@ -67,10 +65,9 @@ public class JdbcDoctorDao implements DoctorDao {
         }
 
     }
-    private Doctor mapRowToAccount(SqlRowSet rs) {
+    private Doctor mapRowToDoctor(SqlRowSet rs) {
         Doctor doctor = new Doctor();
         doctor.setDoctorId(  rs.getInt("doctor_id"));
-        doctor.setUserId( rs.getInt("account_id") );
         return doctor;
     }
 }

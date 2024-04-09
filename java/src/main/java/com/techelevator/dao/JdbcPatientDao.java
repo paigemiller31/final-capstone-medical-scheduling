@@ -39,13 +39,14 @@ public class JdbcPatientDao implements PatientDao{
         Patient p =  null;
 
         String sql =
-                " INSERT INTO patient ( first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
-                " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING patient_id ; " ;
+                " INSERT INTO patient ( user_id, first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
+                " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING patient_id ; " ;
 
         try {
 
             int newPatientId =   jdbcTemplate.queryForObject( sql ,
                     int.class,
+                    patient.getUserId(),
                     patient.getFirstName(),
                     patient.getLastName(),
                     patient.getPhoneNumber(),
@@ -69,10 +70,9 @@ public class JdbcPatientDao implements PatientDao{
     }
 
 
-    private Patient mapRowToAccount(SqlRowSet rs) {
+    private Patient mapRowToPatient(SqlRowSet rs) {
         Patient patient = new Patient();
         patient.setPatientId(  rs.getInt("patient_id"));
-        patient.setUserId( rs.getInt("account_id") );
         return patient;
     }
 
