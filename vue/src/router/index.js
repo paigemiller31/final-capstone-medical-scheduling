@@ -57,7 +57,7 @@ const routes = [
     }
   },
    {
-    path: "/patientregistration",
+    path: "/patientRegistration",
     name: "patient-registration",
     component: PatientRegistrationView,
     meta: {
@@ -65,7 +65,7 @@ const routes = [
     }
   },
   {
-    path: "/doctorregistration",
+    path: "/doctorRegistration",
     name: "doctor-registration",
     component: DoctorRegistrationView,
     meta: {
@@ -81,7 +81,7 @@ const routes = [
     }
   },
   {
-    path: "/scheduleappointment",
+    path: "/scheduleAppointment",
     name: "schedule-appointment",
     component: ScheduleAppointmentView,
     meta: {
@@ -89,7 +89,7 @@ const routes = [
     }
   },
   {
-    path: "/myappointments",
+    path: "/myAppointments",
     name: "my-appointment",
     component: MyAppointmentsView,
     meta: {
