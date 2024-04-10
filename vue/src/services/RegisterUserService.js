@@ -4,7 +4,7 @@ export default {
 
     registerPatient(patient) {
         // pass in patient or user?
-        return axios.post('/patientRegistration', patient)
+        return axios.post('/patient', patient)
     },
 
     registerDoctor(doctor) {

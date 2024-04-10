@@ -15,9 +15,10 @@
 
                     <div id="name-flex-box">
                         <div id="first-name">
-                            <header>First Name</header>
+                            <header>First Name {{this.$store.state.user.id }}</header>
+                            
                             <div class="form-input-group">
-                                <input type="text" id="first-name-input-box" v-model="patient.firstName" required
+                                <input type="text" id="first-name-input-box" v-bind="patient.firstName" required
                                     autofocus />
                             </div>
                         </div>
@@ -25,7 +26,7 @@
                         <div id="last-name">
                             <header>Last Name</header>
                             <div class="form-input-group">
-                                <input type="text" id="last-name-input-box" v-model="patient.lastName" required autofocus />
+                                <input type="text" id="last-name-input-box" v-bind="patient.lastName" required autofocus />
                             </div>
                         </div>
                     </div>
@@ -35,11 +36,11 @@
                         <div id="address">
                             <header>Address</header>
                             <div class="form-input-group">
-                                <input type="text" id="address1-input-box" v-model="patient.addressLineOne" required
+                                <input type="text" id="address1-input-box" v-bind="patient.addressLineOne" required
                                     autofocus />
                             </div>
                             <div class="form-input-group">
-                                <input type="text" id="address2-input-box" v-model="patient.addressLineTwo" required
+                                <input type="text" id="address2-input-box" v-bind="patient.addressLineTwo" required
                                     autofocus />
                             </div>
                         </div>
@@ -50,21 +51,21 @@
                         <div id="city">
                             <header>City</header>
                             <div class="form-input-group">
-                                <input type="text" id="city-input-box" v-model="patient.city" required autofocus />
+                                <input type="text" id="city-input-box" v-bind="patient.city" required autofocus />
                             </div>
                         </div>
 
                         <div id="state">
                             <header>State</header>
                             <div class="form-input-group">
-                                <input type="text" id="state-input-box" v-model="patient.state" required autofocus />
+                                <input type="text" id="state-input-box" v-bind="patient.state" required autofocus />
                             </div>
                         </div>
 
                         <div id="zip-code">
                             <header>Zip Code</header>
                             <div class="form-input-group">
-                                <input type="text" id="zip-code-input-box" v-model="patient.zipCode" required autofocus />
+                                <input type="text" id="zip-code-input-box" v-bind="patient.zipCode" required autofocus />
                             </div>
                         </div>
                     </div>
@@ -74,7 +75,7 @@
                         <div id="phone-number">
                             <header>Phone Number</header>
                             <div class="form-input-group">
-                                <input type="text" id="phone-number-input-box" v-model="patient.phoneNumber" required
+                                <input type="text" id="phone-number-input-box" v-bind="patient.phoneNumber" required
                                     autofocus />
                             </div>
                         </div>
@@ -82,7 +83,7 @@
                         <div id="email-address">
                             <header>Email Address</header>
                             <div class="form-input-group">
-                                <input type="text" id="email-address-input-box" v-model="patient.emailAddress" required
+                                <input type="text" id="email-address-input-box" v-bind="patient.emailAddress" required
                                     autofocus />
                             </div>
                         </div>
@@ -92,29 +93,30 @@
 
                 <div class="button-grid">
 
-                    <button id="button" type="submit" v-on:click="register()">Submit</button>
-                        <!--insert v-bind to stop infinite form loop-->
+                    <button id="button" type="submit" v-on:click="submitPatientForm()">Submit</button>
+                    <!--insert v-bind to stop infinite form loop-->
                 </div>
 
             </div>
 
         </div>
     </div>
-    <patient-registration v-bind:patient="patient" />
+    <!-- <patient-registration v-bind:patient="patient" /> -->
+    <register-user-service />
 </template>
 
 <script>
 
-import PatientRegistration from '../components/PatientRegistration.vue'
+import RegisterUserService from '../services/RegisterUserService';
 
 export default {
     components: {
-        PatientRegistration
+        RegisterUserService,
     },
     data() {
         return {
             patient: {
-                id: 0,
+                id: this.$store.state.user.id,
                 firstName: '',
                 lastName: '',
                 addressLineOne: '',
@@ -125,12 +127,115 @@ export default {
                 phoneNumber: '',
                 emailAddress: '',
             },
+
+            // patient: {
+            //     id: this.$store.state.user.id,
+            //     firstName: this.patient.firstName,
+            //     lastName: this.patient.lastName,
+            //     addressLineOne: this.patient.addressLineOne,
+            //     addressLineTwo: this.patient.addressLineTwo,
+            //     city: this.patient.city,
+            //     state: this.patient.state,
+            //     zipCode: this.patient.zipCode,
+            //     phoneNumber: this.patient.phoneNumber,
+            //     emailAddress: this.patient.emailAddress,
+            // }
         }
     },
     methods: {
         register() {
             this.$router.push("/");
-        }
+        },
+
+        submitPatientForm() {
+
+            if (!this.validatePatientForm()) {
+                return;
+            }
+
+            if (this.$store.state.user.id === 0) {
+                RegisterUserService.registerPatient(this.patient)
+                    .then(response => {
+                        if (response.status === 201) { 
+                            this.$router.push({ name: 'home'});
+                        }
+                    })
+                    .catch(error => {
+                        this.handleErrorResponse(error, 'adding');
+                    })
+            }
+
+        },
+
+        handleErrorResponse(error, verb) {
+
+            if (error.response) {
+                if (error.response.status == 404) {
+                    this.$router.push({ name: 'NotFoundView' });
+                } else {
+                    this.$store.commit('SET_NOTIFICATION',
+                        `Error ${verb} message. Response received was "${error.response.statusText}".`);
+                }
+            } else if (error.request) {
+                this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Server could not be reached.`);
+            } else {
+                this.$store.commit('SET_NOTIFICATION', `Error ${verb} message. Request could not be created.`);
+            }
+        },
+
+        validatePatientForm() {
+
+            let alert = '';
+
+            this.patient.firstName = this.patient.firstName.trim();
+            if (this.patient.firstName.length === 0) {
+                alert += "First name is required for registration";
+            }
+
+            this.patient.lastName = this.patient.lastName.trim();
+            if (this.patient.lastName.length === 0) {
+                alert += "Last name is required for registration";
+            }
+
+            this.patient.addressLineOne = this.patient.addressLineOne.trim();
+            if (this.patient.addressLineOne.length === 0) {
+                alert += "Address is required for registration";
+            }
+
+            this.patient.addressLineTwo = this.patient.addressLineTwo.trim();
+
+            this.patient.city = this.patient.city.trim();
+            if (this.patient.city.length === 0) {
+                alert += "City is required for registration";
+            }
+
+            this.patient.state = this.patient.state.trim();
+            if (this.patient.state.length === 0) {
+                alert += "State is required for registration";
+            }
+
+            this.patient.zipCode = this.patient.zipCode.trim();
+            if (this.patient.zipCode.length === 0) {
+                alert += "Zip code is required for registration";
+            }
+
+            this.patient.phoneNumber = this.patient.phoneNumber.trim();
+            if (this.patient.phoneNumber.length === 0) {
+                alert += "Phone number is required for registration";
+            }
+
+            this.patient.emailAddress = this.patient.emailAddress.trim();
+            if (this.patient.emailAddress === 0) {
+                alert += "Email address is required for registration";
+            }
+
+            if (alert.length > 0) {
+                this.$store.commit('SET_NOTIFICATION', alert);
+                return false;
+            }
+            return true;
+        },
+
     }
 
 };
