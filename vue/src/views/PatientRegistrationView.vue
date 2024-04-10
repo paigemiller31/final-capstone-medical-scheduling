@@ -2,101 +2,102 @@
     <div class="main-grid-container">
 
         <div class="transparent-box-grid">
-            
-        <div id="patient-registration-component">
 
-            <div class="header-grid">
+            <div id="patient-registration-component">
 
-            <h1 id="patient-registration-header">Patient Registration</h1>
+                <div class="header-grid">
 
-        </div>
+                    <h1 id="patient-registration-header">Patient Registration</h1>
 
-            <div id="input-container">
-
-                <div id="name-flex-box">
-                    <div id="first-name">
-                        <header>First Name</header>
-                        <div class="form-input-group">
-                            <input type="text" id="first-name-input-box" v-model="patient.firstName" required autofocus />
-                        </div>
-                    </div>
-
-                    <div id="last-name">
-                        <header>Last Name</header>
-                        <div class="form-input-group">
-                            <input type="text" id="last-name-input-box" v-model="patient.lastName" required autofocus />
-                        </div>
-                    </div>
                 </div>
 
+                <div id="input-container">
 
-                <div id="address-flex-box">
-                    <div id="address">
-                        <header>Address</header>
-                        <div class="form-input-group">
-                            <input type="text" id="address1-input-box" v-model="patient.addressLineOne" required
-                                autofocus />
+                    <div id="name-flex-box">
+                        <div id="first-name">
+                            <header>First Name</header>
+                            <div class="form-input-group">
+                                <input type="text" id="first-name-input-box" v-model="patient.firstName" required
+                                    autofocus />
+                            </div>
                         </div>
-                        <div class="form-input-group">
-                            <input type="text" id="address2-input-box" v-model="patient.addressLineTwo" required
-                                autofocus />
+
+                        <div id="last-name">
+                            <header>Last Name</header>
+                            <div class="form-input-group">
+                                <input type="text" id="last-name-input-box" v-model="patient.lastName" required autofocus />
+                            </div>
                         </div>
                     </div>
+
+
+                    <div id="address-flex-box">
+                        <div id="address">
+                            <header>Address</header>
+                            <div class="form-input-group">
+                                <input type="text" id="address1-input-box" v-model="patient.addressLineOne" required
+                                    autofocus />
+                            </div>
+                            <div class="form-input-group">
+                                <input type="text" id="address2-input-box" v-model="patient.addressLineTwo" required
+                                    autofocus />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="city-state-zip-flex-box">
+                        <div id="city">
+                            <header>City</header>
+                            <div class="form-input-group">
+                                <input type="text" id="city-input-box" v-model="patient.city" required autofocus />
+                            </div>
+                        </div>
+
+                        <div id="state">
+                            <header>State</header>
+                            <div class="form-input-group">
+                                <input type="text" id="state-input-box" v-model="patient.state" required autofocus />
+                            </div>
+                        </div>
+
+                        <div id="zip-code">
+                            <header>Zip Code</header>
+                            <div class="form-input-group">
+                                <input type="text" id="zip-code-input-box" v-model="patient.zipCode" required autofocus />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="contact-flex-box">
+                        <div id="phone-number">
+                            <header>Phone Number</header>
+                            <div class="form-input-group">
+                                <input type="text" id="phone-number-input-box" v-model="patient.phoneNumber" required
+                                    autofocus />
+                            </div>
+                        </div>
+
+                        <div id="email-address">
+                            <header>Email Address</header>
+                            <div class="form-input-group">
+                                <input type="text" id="email-address-input-box" v-model="patient.emailAddress" required
+                                    autofocus />
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
+                <div class="button-grid">
 
-                <div id="city-state-zip-flex-box">
-                    <div id="city">
-                        <header>City</header>
-                        <div class="form-input-group">
-                            <input type="text" id="city-input-box" v-model="patient.city" required autofocus />
-                        </div>
-                    </div>
-
-                    <div id="state">
-                        <header>State</header>
-                        <div class="form-input-group">
-                            <input type="text" id="state-input-box" v-model="patient.state" required autofocus />
-                        </div>
-                    </div>
-
-                    <div id="zip-code">
-                        <header>Zip Code</header>
-                        <div class="form-input-group">
-                            <input type="text" id="zip-code-input-box" v-model="patient.zipCode" required autofocus />
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="contact-flex-box">
-                    <div id="phone-number">
-                        <header>Phone Number</header>
-                        <div class="form-input-group">
-                            <input type="text" id="phone-number-input-box" v-model="patient.phoneNumber" required
-                                autofocus />
-                        </div>
-                    </div>
-
-                    <div id="email-address">
-                        <header>Email Address</header>
-                        <div class="form-input-group">
-                            <input type="text" id="email-address-input-box" v-model="patient.emailAddress" required
-                                autofocus />
-                        </div>
-                    </div>
+                    <button id="button" type="submit" v-on:click="register()">Submit</button>
+                        <!--insert v-bind to stop infinite form loop-->
                 </div>
 
             </div>
 
-            <div class="button-grid">
-
-            <button id="button" type="submit" v-on:click="submitPatientForm()">Submit</button>
-
-        </div>
-        
-        </div>
-        
         </div>
     </div>
     <patient-registration v-bind:patient="patient" />
@@ -126,6 +127,11 @@ export default {
             },
         }
     },
+    methods: {
+        register() {
+            this.$router.push("/");
+        }
+    }
 
 };
 </script>
@@ -202,7 +208,7 @@ export default {
     flex-basis: 100%;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 #city-state-zip-flex-box {

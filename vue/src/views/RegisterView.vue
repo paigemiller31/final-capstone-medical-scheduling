@@ -4,29 +4,30 @@
       <form v-on:submit.prevent="register">
         <div class="container">
           <div class="register-component">
-        <h1 id="register-header">Register</h1>
-        <div class="form-input-group">
-          <input type="text" class="register-input-box" v-model="user.username" required autofocus placeholder=" Username" />
+            <h1 id="register-header">Register</h1>
+            <div class="form-input-group">
+              <input type="text" class="register-input-box" v-model="user.username" required autofocus
+                placeholder=" Username" />
+            </div>
+            <div class="form-input-group">
+              <input type="password" class="register-input-box" v-model="user.password" required
+                placeholder=" Password" />
+            </div>
+            <div class="form-input-group">
+              <input type="password" class="register-input-box" v-model="user.confirmPassword" required
+                placeholder=" Confirm Password" />
+            </div>
+            <div role="alert" v-if="registrationErrors">
+              {{ registrationErrorMsg }}
+            </div>
+            <!-- added register method - what is it doing ... ? -->
+            <p class="button-alignment"><button id="button" type="submit" v-on:click="login()">Submit</button></p>
+          </div>
+          <div class="login-component">
+            <p>Already registered?</p>
+            <router-link v-bind:to="{ name: 'login' }"><button id="button" type="submit">Login</button></router-link>
+          </div>
         </div>
-        <div class="form-input-group">
-          <input type="password" class="register-input-box" v-model="user.password" required placeholder=" Password" />
-        </div>
-        <div class="form-input-group">
-          <input type="password" class="register-input-box" v-model="user.confirmPassword" required
-            placeholder=" Confirm Password" />
-        </div>
-        <div role="alert" v-if="registrationErrors">
-          {{ registrationErrorMsg }}
-        </div>
-        <!-- added register method - what is it doing ... ? -->
-        <p class="button-alignment"><button id="button" type="submit" v-on:click="registerAsPatient()">Register as Patient</button></p>
-        <p class="button-alignment"><button id="button" type="submit" v-on:click="registerAsDoctor()">Register as Doctor</button></p>
-        </div>
-        <div class="login-component">
-          <p>Already registered?</p>
-          <router-link v-bind:to="{ name: 'login' }"><button id="button" type="submit">Login</button></router-link>
-        </div>
-      </div>
       </form>
     </div>
   </body>
@@ -49,6 +50,52 @@ export default {
     };
   },
   methods: {
+    login() {
+
+      if (this.user.password != this.user.confirmPassword) {
+        this.registrationErrors = true;
+        this.registrationErrorMsg = 'Password entries do not match.';
+      } else {
+        authService
+          .register(this.user)
+          .then((response) => {
+            if (response.status == 201) {
+              // this.$router.push({
+              //   path: '/patientRegistration',
+              //   query: { registration: 'success' },
+              // });
+              authService
+                .login(this.user)
+                .then(response => {
+                  if (response.status == 200) {
+                    this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+                    this.$store.commit("SET_USER", response.data.user);
+                    this.$router.push("/patientRegistration");
+                  }
+                })
+                .catch(error => {
+                  const response = error.response;
+
+                  if (response.status === 401) {
+                    this.invalidCredentials = true;
+                  }
+                });
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+            this.registrationErrors = true;
+            if (response.status === 400) {
+              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              // ^^^^^^^^^^^^^^ change dis
+            }
+          });
+
+
+
+
+      }
+    },
     registerAsPatient() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;

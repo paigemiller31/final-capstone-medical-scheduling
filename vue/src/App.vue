@@ -6,9 +6,8 @@
       <router-link class="nav-link" v-bind:to="{ name: 'offices' }">Offices</router-link>&nbsp;|&nbsp;
       <router-link class="nav-link" v-bind:to="{ name: 'schedule-appointment' }">Schedule Appointment</router-link>&nbsp;|&nbsp;
       <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }">My Appointments</router-link>&nbsp;|&nbsp;
-      <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link> &nbsp;|&nbsp;
-      <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-      <!-- ^^^ we need to make the login and logout TOGGLE ! ^^^ -->
+      <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
+      <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token != ''">Logout</router-link>
 
     </div>
     <router-view />
@@ -17,6 +16,7 @@
 
 <script>
 </script>
+
 
 <style>
 body {
@@ -30,5 +30,9 @@ body {
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10pt;
-}
+} 
+
+
+
+
 </style>

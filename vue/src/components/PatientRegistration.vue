@@ -10,12 +10,12 @@
 import RegisterUserService from '../services/RegisterUserService';
 
 export default {
-    props: {
+   /* props: {
         patient: {
             type: Object,
             required: true,
         },
-    },
+    },*/
 
     data() {
         return {
