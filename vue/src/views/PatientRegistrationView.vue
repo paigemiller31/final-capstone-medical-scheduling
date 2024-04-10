@@ -15,10 +15,10 @@
 
                     <div id="name-flex-box">
                         <div id="first-name">
-                            <header>First Name {{this.$store.state.user.id }}</header>
+                            <header>First Name</header>
                             
                             <div class="form-input-group">
-                                <input type="text" id="first-name-input-box" v-bind="patient.firstName" required
+                                <input type="text" id="first-name-input-box" v-model="patient.firstName" required
                                     autofocus />
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                         <div id="last-name">
                             <header>Last Name</header>
                             <div class="form-input-group">
-                                <input type="text" id="last-name-input-box" v-bind="patient.lastName" required autofocus />
+                                <input type="text" id="last-name-input-box" v-model="patient.lastName" required autofocus />
                             </div>
                         </div>
                     </div>
@@ -36,11 +36,11 @@
                         <div id="address">
                             <header>Address</header>
                             <div class="form-input-group">
-                                <input type="text" id="address1-input-box" v-bind="patient.addressLineOne" required
+                                <input type="text" id="address1-input-box" v-model="patient.addressLine1" required
                                     autofocus />
                             </div>
                             <div class="form-input-group">
-                                <input type="text" id="address2-input-box" v-bind="patient.addressLineTwo" required
+                                <input type="text" id="address2-input-box" v-model="patient.addressLine2" required
                                     autofocus />
                             </div>
                         </div>
@@ -51,21 +51,21 @@
                         <div id="city">
                             <header>City</header>
                             <div class="form-input-group">
-                                <input type="text" id="city-input-box" v-bind="patient.city" required autofocus />
+                                <input type="text" id="city-input-box" v-model="patient.city" required autofocus />
                             </div>
                         </div>
 
                         <div id="state">
                             <header>State</header>
                             <div class="form-input-group">
-                                <input type="text" id="state-input-box" v-bind="patient.state" required autofocus />
+                                <input type="text" id="state-input-box" v-model="patient.state" required autofocus />
                             </div>
                         </div>
 
                         <div id="zip-code">
                             <header>Zip Code</header>
                             <div class="form-input-group">
-                                <input type="text" id="zip-code-input-box" v-bind="patient.zipCode" required autofocus />
+                                <input type="text" id="zip-code-input-box" v-model="patient.zipCode" required autofocus />
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         <div id="phone-number">
                             <header>Phone Number</header>
                             <div class="form-input-group">
-                                <input type="text" id="phone-number-input-box" v-bind="patient.phoneNumber" required
+                                <input type="text" id="phone-number-input-box" v-model="patient.phoneNumber" required
                                     autofocus />
                             </div>
                         </div>
@@ -83,11 +83,12 @@
                         <div id="email-address">
                             <header>Email Address</header>
                             <div class="form-input-group">
-                                <input type="text" id="email-address-input-box" v-bind="patient.emailAddress" required
+                                <input type="text" id="email-address-input-box" v-model="patient.email" required
                                     autofocus />
                             </div>
                         </div>
                     </div>
+
 
                 </div>
 
@@ -111,21 +112,21 @@ import RegisterUserService from '../services/RegisterUserService';
 
 export default {
     components: {
-        RegisterUserService,
+        //RegisterUserService,
     },
     data() {
         return {
             patient: {
-                id: this.$store.state.user.id,
+                userId: this.$store.state.user.id,
                 firstName: '',
                 lastName: '',
-                addressLineOne: '',
-                addressLineTwo: '',
+                addressLine1: '',
+                addressLine2: '',
                 city: '',
                 state: '',
                 zipCode: '',
                 phoneNumber: '',
-                emailAddress: '',
+                email: '',
             },
 
             // patient: {
@@ -140,7 +141,7 @@ export default {
             //     phoneNumber: this.patient.phoneNumber,
             //     emailAddress: this.patient.emailAddress,
             // }
-        }
+        };
     },
     methods: {
         register() {
@@ -149,15 +150,17 @@ export default {
 
         submitPatientForm() {
 
-            if (!this.validatePatientForm()) {
-                return;
-            }
+            //if (!this.validatePatientForm()) {
+            //     return;
+            // }
+            // ^^^ FIX VALIDATE PATIENT FORM later (OR) implement in BOOTSTRAP
 
-            if (this.$store.state.user.id === 0) {
+            if (this.$store.state.user.id != 0) {
                 RegisterUserService.registerPatient(this.patient)
                     .then(response => {
-                        if (response.status === 201) { 
-                            this.$router.push({ name: 'home'});
+                        if (response.status === 200) { 
+                            // this.$router.push({ name: 'home'});
+                            this.$router.push("/");
                         }
                     })
                     .catch(error => {
@@ -234,10 +237,8 @@ export default {
                 return false;
             }
             return true;
-        },
-
+        }
     }
-
 };
 </script>
 
