@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
 
-	DROP TABLE IF EXISTS office, patient, doctor, users CASCADE;
+DROP TABLE IF EXISTS office, patient, doctor, users CASCADE;
 	
 
 CREATE TABLE users (
@@ -16,7 +16,6 @@ CREATE TABLE users (
 CREATE TABLE IF NOT EXISTS patient
 (
     patient_id int,
-    office_id int UNIQUE,
     first_name VARCHAR (64),
     last_name VARCHAR (64) ,
 	phone_number VARCHAR(15),
@@ -55,7 +54,6 @@ CREATE TABLE IF NOT EXISTS office
 	email VARCHAR(64),
 	office_hours VARCHAR(15),
 	CONSTRAINT PK_office PRIMARY KEY (office_id),
-	CONSTRAINT FK_patient FOREIGN KEY (office_id) REFERENCES patient (office_id),
 	CONSTRAINT FK_office_doctor FOREIGN KEY (office_id) REFERENCES doctor (office_id)
 	);
 

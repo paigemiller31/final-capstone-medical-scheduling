@@ -61,7 +61,7 @@
                    
                      <div class="col-md-12" id = "submit-button">
                             <label> . </label>            
-                            <button class="btn btn-primary" type="submit" v-on:click.prevent="submitPatientForm()" > Submit form </button>                         
+                            <button class="btn btn-primary" type="submit" v-on:click="submitPatientForm()" > Submit form </button>                         
                      </div>
                               
                  </form>
@@ -85,7 +85,7 @@ export default {
     data() {
         return {
             patient: {
-                userId: this.$store.state.user.id,
+                patientId: this.$store.state.user.id,
                 firstName: '',
                 lastName: '',
                 addressLine1: '',

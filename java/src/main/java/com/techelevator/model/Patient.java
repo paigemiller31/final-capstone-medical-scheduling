@@ -5,12 +5,10 @@ import java.math.BigDecimal;
 public class Patient {
 
     private int patientId;
-    private int userId;
     private String firstName;
     private String lastName ;
     private String phoneNumber;
     private String email;
-    private boolean emailReminder;
     private String addressLine1;
     private String addressLine2;
     private String city;
@@ -23,14 +21,6 @@ public class Patient {
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -65,13 +55,6 @@ public class Patient {
         this.email = email;
     }
 
-    public boolean isEmailReminder() {
-        return emailReminder;
-    }
-
-    public void setEmailReminder(boolean emailReminder) {
-        this.emailReminder = emailReminder;
-    }
 
     public String getAddressLine1() {
         return addressLine1;
@@ -119,12 +102,11 @@ public class Patient {
     }
 
 
-    public Patient(int patientId, int userId,
+    public Patient(int patientId,
                    String firstName,
                    String lastName,
                    String phoneNumber,
                    String email,
-                   boolean emailReminder,
                    String addressLine1,
                    String addressLine2,
                    String city,
@@ -132,12 +114,10 @@ public class Patient {
                    String zipCode    )
     {
         this.patientId = patientId;
-        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.emailReminder = emailReminder;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
@@ -149,12 +129,10 @@ public class Patient {
     public String toString() {
         return "Patient{" +
                 "patientId=" + patientId +
-                ", userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", emailReminder=" + emailReminder +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
                 ", city='" + city + '\'' +
