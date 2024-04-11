@@ -37,14 +37,14 @@ public class JdbcPatientDao implements PatientDao{
     public void createPatient(Patient patient){
 
         String sql =
-                " INSERT INTO patient ( user_id, first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
+                " INSERT INTO patient ( patient_id, first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
                 " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING patient_id ; " ;
 
         try {
 
             int newPatientId =   jdbcTemplate.queryForObject( sql ,
                     int.class,
-                    patient.getUserId(),
+                    patient.getPatientId(),
                     patient.getFirstName(),
                     patient.getLastName(),
                     patient.getPhoneNumber(),
