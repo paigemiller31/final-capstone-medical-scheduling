@@ -14,7 +14,7 @@
 
                 <form class="row g-6"  >
 
-                     <div class="col-sm-6">
+                     <div class="col-md-6">
                             <label for="firstName" class="form-label">First name</label>
                             <input type="text" class="form-control" id="firstName" v-model="patient.firstName" required>
                      </div>
@@ -61,7 +61,7 @@
                    
                      <div class="col-md-12" id = "submit-button">
                             <label> . </label>            
-                            <button class="btn btn-primary" type="submit" v-on:click="submitPatientForm()" > Submit form </button>                         
+                            <button class="btn btn-primary" type="submit" v-on:click.prevent="submitPatientForm()" > Submit form </button>                         
                      </div>
                               
                  </form>
@@ -109,31 +109,23 @@ export default {
             //     return;
             // }
             // ^^^ FIX VALIDATE PATIENT FORM later (OR) implement in BOOTSTRAP
+ 
 
-
-            // if (this.user.password != this.user.confirmPassword) {
-            //      Check if all patient  form is valid ;
-            //  } else {
-
-                   if (this.$store.state.user.id != 0) {
-
-                       RegisterUserService.registerPatient(this.patient)
-                           .then(response => {
-                               if (response.status === 201) { 
-                                  
-                                   this.$router.push({ name: 'home'});
-
-                               }
-                           })
-                           .catch(error => {
-                               this.handleErrorResponse(error, 'adding');
-                           })
-                      }
-
-                 }
-           // }
-
-            ,
+            if (this.$store.state.user.id != 0) {
+                
+                RegisterUserService.registerPatient(this.patient)
+                    .then(response => {
+                        if (response.status === 201) { 
+                    
+                            this.$router.push({ name: 'home'});
+                                                    
+                        }
+                    })
+                    .catch(error => {
+                        this.handleErrorResponse(error, 'adding');
+                    })
+                }
+            },
 
         handleErrorResponse(error, verb) {
 
@@ -208,8 +200,6 @@ export default {
 </script>
 
 <style >
-
-
 .main-grid-container {
     display: grid;
     grid-template-columns: 1fr 40fr 1fr;
