@@ -60,8 +60,9 @@
                      </div>
                    
                      <div class="col-md-12" id = "submit-button">
-                            <label> . </label>            
-                            <button class="btn btn-primary" type="submit" v-on:click="submitPatientForm()" > Submit form </button>                         
+                            <h1> </h1>   
+      
+                            <button class="btn btn-primary" type="submit" v-on:click.prevent="submitPatientForm()" > Submit form  </button>                         
                      </div>
                               
                  </form>
@@ -111,14 +112,14 @@ export default {
             // ^^^ FIX VALIDATE PATIENT FORM later (OR) implement in BOOTSTRAP
  
 
-            if (this.$store.state.user.id != 0) {
+            if (this.$store.state.user.id !== 0) {
                 
                 RegisterUserService.registerPatient(this.patient)
                     .then(response => {
                         if (response.status === 201) { 
-                    
-                            this.$router.push({ name: 'home'});
-                                                    
+                   
+                            this.$router.push('/');
+                            alert( "test sucess");                          
                         }
                     })
                     .catch(error => {
