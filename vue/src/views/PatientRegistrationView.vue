@@ -1,109 +1,77 @@
 <template>
+
     <div class="main-grid-container">
-
-        <div class="transparent-box-grid">
-
-            <div id="patient-registration-component">
-
+      
+        <div class="transparent-box-grid"> 
+  
+            <div id="patient-registration-component"  class="container  transparent-box-grid"> 
+               
                 <div class="header-grid">
 
-                    <h1 id="patient-registration-header">Patient Registration</h1>
+                      <h2 id="patient-registration-header">Patient &nbsp; Registration</h2>
+        
+                 </div>
 
-                </div>
+                <form class="row g-6"  >
 
-                <div id="input-container">
+                     <div class="col-sm-6">
+                            <label for="firstName" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="firstName" v-model="patient.firstName" required>
+                     </div>
 
-                    <div id="name-flex-box">
-                        <div id="first-name">
-                            <header>First Name</header>
-                            
-                            <div class="form-input-group">
-                                <input type="text" id="first-name-input-box" v-model="patient.firstName" required
-                                    autofocus />
-                            </div>
-                        </div>
+                     <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last name</label>
+                            <input type="text" class="form-control" id="lastName" v-model="patient.lastName" required>
+                     </div>
+                 
+                     <div class="col-md-6">
+                            <label for="phoneNumber" class="form-label">PhoneNumber</label>
+                            <input type="text" class="form-control" id="phoneNumber" v-model="patient.phoneNumber" required>
+                     </div>
 
-                        <div id="last-name">
-                            <header>Last Name</header>
-                            <div class="form-input-group">
-                                <input type="text" id="last-name-input-box" v-model="patient.lastName" required autofocus />
-                            </div>
-                        </div>
-                    </div>
+                     <div class="col-md-6">
+                            <label for="Email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="Email" v-model="patient.email" required>
+                     </div>
 
+                     <div class="col-md-6">
+                            <label for="Address1" class="form-label"> Address Line 1 </label>
+                            <input type="text" class="form-control" id="Address1"  v-model="patient.addressLine1" required>
+                     </div>
 
-                    <div id="address-flex-box">
-                        <div id="address">
-                            <header>Address</header>
-                            <div class="form-input-group">
-                                <input type="text" id="address1-input-box" v-model="patient.addressLine1" required
-                                    autofocus />
-                            </div>
-                            <div class="form-input-group">
-                                <input type="text" id="address2-input-box" v-model="patient.addressLine2" required
-                                    autofocus />
-                            </div>
-                        </div>
-                    </div>
+                     <div class="col-md-6">
+                            <label for="Address2" class="form-label"> Address Line 2 </label>
+                            <input type="text" class="form-control" id="Address2" v-model="patient.addressLine2" required>
+                     </div>
 
+                     <div class="col-md-4">
+                            <label for="City" class="form-label">City</label>
+                            <input type="text" class="form-control" id="City"  v-model="patient.city"  required>
+                     </div>
 
-                    <div id="city-state-zip-flex-box">
-                        <div id="city">
-                            <header>City</header>
-                            <div class="form-input-group">
-                                <input type="text" id="city-input-box" v-model="patient.city" required autofocus />
-                            </div>
-                        </div>
+                     <div class="col-md-4">
+                            <label for="State" class="form-label">State</label>
+                            <input type="text" class="form-control" id="State"  v-model="patient.state"  required>
+                     </div> 
 
-                        <div id="state">
-                            <header>State</header>
-                            <div class="form-input-group">
-                                <input type="text" id="state-input-box" v-model="patient.state" required autofocus />
-                            </div>
-                        </div>
+                     <div class="col-md-4">
+                            <label for="ZipCode" class="form-label">ZipCode</label>
+                            <input type="text" class="form-control" id="ZipCode" v-model="patient.zipCode"  required>
+                     </div>
+                   
+                     <div class="col-md-12" id = "submit-button">
+                            <label> . </label>            
+                            <button class="btn btn-primary" type="submit" v-on:click="submitPatientForm()" > Submit form </button>                         
+                     </div>
+                              
+                 </form>
 
-                        <div id="zip-code">
-                            <header>Zip Code</header>
-                            <div class="form-input-group">
-                                <input type="text" id="zip-code-input-box" v-model="patient.zipCode" required autofocus />
-                            </div>
-                        </div>
-                    </div>
+            </div>  
 
+        </div> 
 
-                    <div id="contact-flex-box">
-                        <div id="phone-number">
-                            <header>Phone Number</header>
-                            <div class="form-input-group">
-                                <input type="text" id="phone-number-input-box" v-model="patient.phoneNumber" required
-                                    autofocus />
-                            </div>
-                        </div>
-
-                        <div id="email-address">
-                            <header>Email Address</header>
-                            <div class="form-input-group">
-                                <input type="text" id="email-address-input-box" v-model="patient.email" required
-                                    autofocus />
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="button-grid">
-
-                    <button id="button" type="submit" v-on:click="submitPatientForm()">Submit</button>
-                    <!--insert v-bind to stop infinite form loop-->
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <!-- <patient-registration v-bind:patient="patient" /> -->
-    <register-user-service />
+  </div> 
+ 
 </template>
 
 <script>
@@ -129,46 +97,43 @@ export default {
                 email: '',
             },
 
-            // patient: {
-            //     id: this.$store.state.user.id,
-            //     firstName: this.patient.firstName,
-            //     lastName: this.patient.lastName,
-            //     addressLineOne: this.patient.addressLineOne,
-            //     addressLineTwo: this.patient.addressLineTwo,
-            //     city: this.patient.city,
-            //     state: this.patient.state,
-            //     zipCode: this.patient.zipCode,
-            //     phoneNumber: this.patient.phoneNumber,
-            //     emailAddress: this.patient.emailAddress,
-            // }
+
         };
     },
     methods: {
-        register() {
-            this.$router.push("/");
-        },
 
         submitPatientForm() {
 
-            //if (!this.validatePatientForm()) {
+       
+            // if (!this.validatePatientForm()) {
             //     return;
             // }
             // ^^^ FIX VALIDATE PATIENT FORM later (OR) implement in BOOTSTRAP
 
-            if (this.$store.state.user.id != 0) {
-                RegisterUserService.registerPatient(this.patient)
-                    .then(response => {
-                        if (response.status === 200) { 
-                            // this.$router.push({ name: 'home'});
-                            this.$router.push("/");
-                        }
-                    })
-                    .catch(error => {
-                        this.handleErrorResponse(error, 'adding');
-                    })
-            }
 
-        },
+            // if (this.user.password != this.user.confirmPassword) {
+            //      Check if all patient  form is valid ;
+            //  } else {
+
+                   if (this.$store.state.user.id != 0) {
+
+                       RegisterUserService.registerPatient(this.patient)
+                           .then(response => {
+                               if (response.status === 201) { 
+                                  
+                                   this.$router.push({ name: 'home'});
+
+                               }
+                           })
+                           .catch(error => {
+                               this.handleErrorResponse(error, 'adding');
+                           })
+                      }
+
+                 }
+           // }
+
+            ,
 
         handleErrorResponse(error, verb) {
 
@@ -242,7 +207,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
+
+
 .main-grid-container {
     display: grid;
     grid-template-columns: 1fr 40fr 1fr;
@@ -285,11 +252,20 @@ export default {
     grid-area: header;
 }
 
+/* #patient-registration-header {
+    display: flex;
+    text-transform: uppercase;
+    margin-top: 30px;
+} */
+
 #patient-registration-header {
     display: flex;
     text-transform: uppercase;
     margin-top: 30px;
+    padding: 5pt;
+    display: block;
 }
+
 
 #patient-registration-component {
     display: grid;
