@@ -6,6 +6,7 @@ public class Office {
     private int officeId;
     private int doctorId ;
     private int patientId ;
+    private String officeName;
     private String addressLine1;
     private String addressLine2;
     private String city;
@@ -13,21 +14,21 @@ public class Office {
     private String zipCode;
     private String phoneNumber;
     private String email;
-    private String  officeHours ;
-    private BigDecimal costPerHour  ;
+    private String officeHours;
 
     public Office() {
 
     }
 
-    public Office(int officeId, int doctorId, int patientId,
+    public Office(int officeId, int doctorId, int patientId, String officeName,
                   String addressLine1, String addressLine2,
                   String city, String state,
                   String zipCode, String phoneNumber, String email,
-                  String officeHours, BigDecimal costPerHour) {
+                  String officeHours) {
         this.officeId = officeId;
         this.doctorId = doctorId;
         this.patientId = patientId;
+        this.officeName = officeName;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
@@ -36,7 +37,6 @@ public class Office {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.officeHours = officeHours;
-        this.costPerHour = costPerHour;
     }
 
 
@@ -65,6 +65,14 @@ public class Office {
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
+    }
+
+    public String getOfficeName() {
+        return officeName;
+    }
+
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
     }
 
     public String getAddressLine1() {
@@ -129,14 +137,6 @@ public class Office {
 
     public void setOfficeHours(String officeHours) {
         this.officeHours = officeHours;
-    }
-
-    public BigDecimal getCostPerHour() {
-        return costPerHour;
-    }
-
-    public void setCostPerHour(BigDecimal costPerHour) {
-        this.costPerHour = costPerHour;
     }
 
 

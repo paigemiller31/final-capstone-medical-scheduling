@@ -32,42 +32,7 @@ public class JdbcOfficeDao implements OfficeDao{
         return office;
     }
 
-    @Override
-    public void createOffice(Office office) {
 
-        String sql =
-                " INSERT INTO office ( address_line_1, address_line_2, city, state, zip_code, phone_number, email, office_hours, cost_per_hour ) " +
-                        " VALUES (  ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING office_id ; " ;
-
-        try {
-
-            int newOfficeId =   jdbcTemplate.queryForObject( sql ,
-
-                    int.class,
-//                    office.getDoctorId(),
-//                    office.getPatientId(),
-                    office.getAddressLine1(),
-                    office.getAddressLine2(),
-                    office.getCity(),
-                    office.getState(),
-                    office.getZipCode(),
-                    office.getPhoneNumber(),
-                    office.getEmail(),
-                    office.getOfficeHours(),
-                    office.getCostPerHour()
-
-            );
-
-            // patient.setPatientId(patientId); // Set the generated patientId to the newPatient object
-
-
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
-        }
-
-    }
 
 
     private Office mapRowToOffice(SqlRowSet rs) {

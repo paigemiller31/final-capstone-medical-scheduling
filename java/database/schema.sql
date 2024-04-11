@@ -38,6 +38,8 @@ CREATE TABLE IF NOT EXISTS doctor
     user_id int,
     first_name VARCHAR (64),
     last_name VARCHAR (64) ,
+	specialization VARCHAR (64),
+	cost_per_hour int,
 	phone_number VARCHAR(15),
     email VARCHAR(64),
 	email_reminder BOOLEAN,
@@ -57,6 +59,7 @@ CREATE TABLE IF NOT EXISTS office
        	office_id SERIAL,
         doctor_id int,
 		patient_id int,
+		office_name VARCHAR (64),
     	address_line_1 VARCHAR (128) ,
     	address_line_2   VARCHAR (128),
     	city  VARCHAR (64),
@@ -65,7 +68,6 @@ CREATE TABLE IF NOT EXISTS office
 	    phone_number VARCHAR(15),
         email VARCHAR(64),
 		office_hours VARCHAR(15),
-		cost_per_hour decimal ,
     	CONSTRAINT PK_office PRIMARY KEY (office_id)
 );
 
