@@ -7,7 +7,7 @@
       <router-link class="nav-link" v-bind:to="{ name: 'schedule-appointment' }">Schedule Appointment</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }">My Appointments</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
-      <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
 
     </div>
     <router-view />
