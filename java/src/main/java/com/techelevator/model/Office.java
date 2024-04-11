@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import java.math.BigDecimal;
 
+
 public class Office {
     private int officeId;
     private int doctorId ;
@@ -38,8 +39,6 @@ public class Office {
         this.email = email;
         this.officeHours = officeHours;
     }
-
-
 
 
 
