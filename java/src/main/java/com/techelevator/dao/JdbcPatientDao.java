@@ -36,8 +36,6 @@ public class JdbcPatientDao implements PatientDao{
     @Override
     public void createPatient(Patient patient){
 
-        Patient p =  null;
-
         String sql =
                 " INSERT INTO patient ( user_id, first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
                 " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING patient_id ; " ;
@@ -68,7 +66,6 @@ public class JdbcPatientDao implements PatientDao{
         }
 
     }
-
 
     private Patient mapRowToPatient(SqlRowSet rs) {
         Patient patient = new Patient();
