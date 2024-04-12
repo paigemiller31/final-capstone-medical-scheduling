@@ -118,8 +118,7 @@ export default {
                     .then(response => {
                         if (response.status === 201) { 
                    
-                            this.$router.push('/');
-                            alert( "test sucess");                          
+                            this.$router.push('/');                         
                         }
                     })
                     .catch(error => {
