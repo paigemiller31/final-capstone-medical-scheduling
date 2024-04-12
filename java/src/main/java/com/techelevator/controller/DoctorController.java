@@ -37,4 +37,20 @@ public class DoctorController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR , "doctor API test failed.");
         }
     }
+
+    /** New Endpoint Stubs **/
+//TODO: Retrieve available slots for a doctor
+    /***
+     * Retrieve available slots for a doctor
+     *
+     * @return ?? Object with timeSlot[] Or just a List<timeSlot>
+     */
+    public Object getDoctorAvailability(){
+
+        return null;
+    }
+
+
+    //TODO: Get Office(s) by doctorID
+
 }

@@ -2,12 +2,15 @@
   <div id="capstone-app">
     <div id="nav" class="top-nav" >
 
+      <router-link class="nav-link" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''"> Welcome, {{$store.state.user.username}} !</router-link>
+
       <router-link class="nav-link" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'offices' }">Offices</router-link>
-      <router-link class="nav-link" v-bind:to="{ name: 'schedule-appointment' }">Schedule Appointment</router-link>
-      <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }">My Appointments</router-link>
+      <router-link class="nav-link" v-bind:to="{ name: 'schedule-appointment' }" v-if="$store.state.token != ''">Schedule Appointment</router-link>
+      <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }" v-if="$store.state.token != ''">My Appointments</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+
 
     </div>
     <router-view />
@@ -15,6 +18,10 @@
 </template>
 
 <script>
+
+
+
+
 </script>
 
 
@@ -24,6 +31,13 @@ body {
   background-image: url("/src/assets/the one.jpg");
   background-attachment: fixed;
   background-size: cover;
+}
+
+#greeting {
+  display: inline-block;
+  color: #ddd;
+  text-align: justify;
+  
 }
 /* .nav-link {
   color: #000000;
