@@ -37,22 +37,18 @@ public class JdbcDoctorDao implements DoctorDao {
     public void createDoctor(Doctor doctor){
 
         String sql =
-                " INSERT INTO doctor ( first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
-                        " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING doctor_id ; " ;
+                " INSERT INTO doctor (doctor_id, first_name, last_name, specialization, cost_per_hour) " +
+                        " VALUES ( ?, ?, ?, ?, ? )  RETURNING doctor_id ; " ;
 
         try {
 
             int newDoctorId =   jdbcTemplate.queryForObject( sql,
                     int.class,
+                    doctor.getDoctorId(),
                     doctor.getFirstName(),
                     doctor.getLastName(),
-                    doctor.getPhoneNumber(),
-                    doctor.getEmail(),
-                    doctor.getAddressLine1(),
-                    doctor.getAddressLine2(),
-                    doctor.getCity(),
-                    doctor.getState(),
-                    doctor.getZipCode()
+                    doctor.getSpecialization(),
+                    doctor.getCostPerHour()
             );
 
             // doctor.setDoctorId(doctorId); // Set the generated doctorId to the newDoctor object
