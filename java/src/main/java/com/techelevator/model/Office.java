@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 
 public class Office {
     private int officeId;
-    private int doctorId ;
-    private int patientId ;
     private String officeName;
     private String addressLine1;
     private String addressLine2;
@@ -21,14 +19,12 @@ public class Office {
 
     }
 
-    public Office(int officeId, int doctorId, int patientId, String officeName,
+    public Office(int officeId, String officeName,
                   String addressLine1, String addressLine2,
                   String city, String state,
                   String zipCode, String phoneNumber, String email,
                   String officeHours) {
         this.officeId = officeId;
-        this.doctorId = doctorId;
-        this.patientId = patientId;
         this.officeName = officeName;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
@@ -48,22 +44,6 @@ public class Office {
 
     public void setOfficeId(int officeId) {
         this.officeId = officeId;
-    }
-
-    public int getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
     }
 
     public String getOfficeName() {
