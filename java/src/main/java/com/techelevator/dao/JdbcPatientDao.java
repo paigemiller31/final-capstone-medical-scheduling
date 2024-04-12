@@ -18,27 +18,11 @@ public class JdbcPatientDao implements PatientDao{
     }
 
     @Override
-    public Patient getPatientByUserId (int userId) {
-        Patient patient = new Patient( ) ;
-//        String sql =  " SELECT account_id, user_id, balance FROM account where  user_id = ?  ; ";
-//
-//        try {
-//            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
-//            if (rowSet.next()) {
-//                patient = mapRowToAccount(rowSet);
-//            }
-//        } catch (CannotGetJdbcConnectionException e) {
-//            throw new DaoException("Unable to connect to server or database", e);
-//        }
-        return patient;
-    }
-
-    @Override
     public void createPatient(Patient patient){
 
         String sql =
                 " INSERT INTO patient ( patient_id, first_name, last_name, phone_number, email, address_line_1, address_line_2, city, state, zip_code) " +
-                " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING patient_id ; " ;
+                        " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )  RETURNING patient_id ; " ;
 
         try {
 
@@ -54,9 +38,9 @@ public class JdbcPatientDao implements PatientDao{
                     patient.getCity(),
                     patient.getState(),
                     patient.getZipCode()
-                    );
+            );
 
-           // patient.setPatientId(patientId); // Set the generated patientId to the newPatient object
+            // patient.setPatientId(patientId); // Set the generated patientId to the newPatient object
 
 
         } catch (CannotGetJdbcConnectionException e) {
@@ -65,6 +49,22 @@ public class JdbcPatientDao implements PatientDao{
             throw new DaoException("Data integrity violation", e);
         }
 
+    }
+
+    @Override
+    public Patient getPatientByUserId (int userId) {
+        Patient patient = new Patient( ) ;
+//        String sql =  " SELECT account_id, user_id, balance FROM account where  user_id = ?  ; ";
+//
+//        try {
+//            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+//            if (rowSet.next()) {
+//                patient = mapRowToAccount(rowSet);
+//            }
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+        return patient;
     }
 
     private Patient mapRowToPatient(SqlRowSet rs) {

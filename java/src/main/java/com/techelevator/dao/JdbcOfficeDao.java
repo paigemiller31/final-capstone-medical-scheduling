@@ -43,21 +43,50 @@ public class JdbcOfficeDao implements OfficeDao{
     }
 
     @Override
-    public Office getOfficeByOfficeId(int userId) {
-        Office office = new Office( ) ;
-//        String sql =  " SELECT account_id, user_id, balance FROM account where  user_id = ?  ; ";
-//
-//        try {
-//            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
-//            if (rowSet.next()) {
-//                patient = mapRowToAccount(rowSet);
-//            }
-//        } catch (CannotGetJdbcConnectionException e) {
-//            throw new DaoException("Unable to connect to server or database", e);
-//        }
+    public Office getOfficeByOfficeId(int officeId) {
+
+        Office office = null;
+
+        String sql = "SELECT office_id, office_name, address_line_1, address_line_2, city, state, " +
+                "zip_code, phone_number, email, office_hours FROM office WHERE office_id = ?;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+            if (results.next()) {
+                office = mapRowToOffice(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
         return office;
     }
 
+    @Override
+    public Office updateOfficeByOfficeId(Office office) {
+
+        Office updatedOffice = null;
+
+        // is semicolon supposed to exist?
+
+        String sql = "UPDATE office SET office_name = ?, address_line_1 = ?, address_line_2 =?, " +
+                "city = ?, state = ?, zip_code = ?, phone_number = ?, email = ?, office_hours = ? " +
+                "WHERE office_id = ?;";
+
+        try {
+            int rowsAffected = jdbcTemplate.update(sql, office.getOfficeName(), office.getAddressLine1(),
+                    office.getAddressLine2(), office.getCity(), office.getState(), office.getZipCode(),
+                    office.getPhoneNumber(), office.getEmail(), office.getOfficeHours());
+            if (rowsAffected == 0) {
+                throw new DaoException("Zero rows affected, expected at least one");
+            }
+            updatedOffice = getOfficeByOfficeId(office.getOfficeId());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return updatedOffice;
+    }
 
 
 

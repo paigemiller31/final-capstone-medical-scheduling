@@ -30,10 +30,9 @@ public class DoctorController {
         this.doctorDao = doctorDao;
     }
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/doctor", method = RequestMethod.POST)
-    public void createTransfer(@RequestBody Doctor newdoctor) {
+    public void createDoctorController(@RequestBody Doctor newdoctor) {
         try {
             doctorDao.createDoctor(newdoctor);
         } catch (Exception ex) {
@@ -43,7 +42,7 @@ public class DoctorController {
 
     //TODO: Completed  Get doctor(s) by OfficeID
     @RequestMapping(path = "/doctor/{officeId}", method = RequestMethod.GET)
-    public List<Doctor> getDoctors(@PathVariable int officeId) {
+    public List<Doctor> getDoctorsByOfficeIdController(@PathVariable int officeId) {
         List<Doctor>  result = new ArrayList<>();
         try {
             result = doctorDao.getDoctorsByOfficeId( officeId );

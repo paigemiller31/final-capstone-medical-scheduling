@@ -32,7 +32,7 @@ public class PatientController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/patient", method = RequestMethod.POST)
-    public void createTransfer(@RequestBody Patient newpatient) {
+    public void createPatientController(@RequestBody Patient newpatient) {
         try {
             patientDao.createPatient( newpatient);
         } catch (Exception ex) {

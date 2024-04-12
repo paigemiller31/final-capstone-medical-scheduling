@@ -21,30 +21,6 @@ public class JdbcDoctorDao implements DoctorDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Override
-    public List<Doctor> getDoctorsByOfficeId(int officeId){
-
-        List<Doctor> doctorList = new ArrayList<>();
-        String sql =  "  SELECT doctor_id, first_name, last_name, specialization, cost_per_hour " +
-                     " FROM public.doctor where office_id = ? ;" ;
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
-
-        try {
-            while (results.next()) {
-                Doctor doctor = mapRowToDoctor(results);
-                doctorList.add(doctor);
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-
-        return doctorList;
-    }
-
-
-
-
 
     @Override
     public void createDoctor(Doctor doctor){
@@ -74,6 +50,29 @@ public class JdbcDoctorDao implements DoctorDao {
         }
 
     }
+
+    @Override
+    public List<Doctor> getDoctorsByOfficeId(int officeId){
+
+        List<Doctor> doctorList = new ArrayList<>();
+        String sql =  "  SELECT doctor_id, first_name, last_name, specialization, cost_per_hour " +
+                " FROM public.doctor where office_id = ? ;" ;
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+
+        try {
+            while (results.next()) {
+                Doctor doctor = mapRowToDoctor(results);
+                doctorList.add(doctor);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+
+        return doctorList;
+    }
+
+
     private Doctor mapRowToDoctor(SqlRowSet rs) {
         Doctor doctor = new Doctor();
         doctor.setDoctorId(  rs.getInt("doctor_id"));
