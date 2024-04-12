@@ -18,6 +18,9 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @PreAuthorize("permitAll")
 @RestController
 @CrossOrigin
@@ -38,6 +41,20 @@ public class DoctorController {
         }
     }
 
+    //TODO: Completed  Get doctor(s) by OfficeID
+    @RequestMapping(path = "/doctor/{officeId}", method = RequestMethod.GET)
+    public List<Doctor> getDoctors(@PathVariable int officeId) {
+        List<Doctor>  result = new ArrayList<>();
+        try {
+            result = doctorDao.getDoctorsByOfficeId( officeId );
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return result;
+    }
+
+
+
     /** New Endpoint Stubs **/
 //TODO: Retrieve available slots for a doctor
     /***
@@ -51,6 +68,6 @@ public class DoctorController {
     }
 
 
-    //TODO: Get Office(s) by doctorID
+
 
 }

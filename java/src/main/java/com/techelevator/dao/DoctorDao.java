@@ -7,6 +7,6 @@ import java.util.List;
 public interface DoctorDao {
 
     // getDoctorByOfficeId and possibly listOfDoctorsByOfficeId
-    public List<Doctor> getDoctorsByUserId(int officeId);
+    public List<Doctor> getDoctorsByOfficeId(int officeId);
     public void createDoctor(Doctor doctor);
 }
