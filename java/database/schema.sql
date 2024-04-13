@@ -57,6 +57,18 @@ CREATE TABLE IF NOT EXISTS doctor
     CONSTRAINT FK_doctor_office FOREIGN KEY (office_id) REFERENCES office (office_id)
 );
 
+CREATE TABLE IF NOT EXISTS appointment
+(
+    appointment_id int,
+    patient_id int,
+    doctor_id int,
+    appointment_date DATE,
+    appointment_time TIMESTAMP,
+    duration int,
+    available BOOLEAN,
+    alert BOOLEAN
+
+);
 
 
 COMMIT TRANSACTION;
