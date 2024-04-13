@@ -65,8 +65,9 @@
                         </div>
                     </div>
 
-
+<div id="submit-button">
                     <button class="btn" type="submit" v-on:click="submitPatientForm()">Submit</button>
+                </div>
 
                 </div>
 
@@ -286,8 +287,6 @@ input[type="text"] {
     outline: none;
 }
 
-#city-input-box {}
-
 #state-input-box {
     width: 50px;
 }
@@ -296,14 +295,11 @@ input[type="text"] {
     width: 100px;
 }
 
-
 @media only screen and (max-width: 500px) {
     .row {
         flex-direction: column;
     }
 }
-
-.form-footer {}
 
 .btn {
     font-family: Arial, Helvetica, sans-serif;
@@ -318,6 +314,10 @@ input[type="text"] {
     cursor: pointer;
 }
 
+#submit-button {
+    display: flex;
+    justify-content: center;
+}
 
 @media only screen and (max-width: 500px) {
     .row {
