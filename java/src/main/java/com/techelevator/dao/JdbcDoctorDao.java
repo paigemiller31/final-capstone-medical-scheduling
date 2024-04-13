@@ -55,7 +55,7 @@ public class JdbcDoctorDao implements DoctorDao {
     public List<Doctor> getDoctorsByOfficeId(int officeId){
 
         List<Doctor> doctorList = new ArrayList<>();
-        String sql =  "  SELECT doctor_id, first_name, last_name, specialization, cost_per_hour " +
+        String sql =  "  SELECT office_id, doctor_id, first_name, last_name, specialization, cost_per_hour " +
                 " FROM public.doctor where office_id = ? ;" ;
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
@@ -76,6 +76,7 @@ public class JdbcDoctorDao implements DoctorDao {
     private Doctor mapRowToDoctor(SqlRowSet rs) {
         Doctor doctor = new Doctor();
         doctor.setDoctorId(  rs.getInt("doctor_id"));
+        doctor.setOfficeId(  rs.getInt("office_id"));
         doctor.setFirstName(  rs.getString("first_name"));
         doctor.setLastName(  rs.getString("last_name"));
         doctor.setSpecialization(  rs.getString("specialization"));

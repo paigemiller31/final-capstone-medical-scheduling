@@ -32,13 +32,13 @@ public class OfficeController {
         return result;
     }
 
-    @RequestMapping(path="/offices/{id}", method = RequestMethod.GET)
-    public Office getOfficeByOfficeIdController(@PathVariable int id) {
+    @RequestMapping(path="/offices/{officeId}", method = RequestMethod.GET)
+    public Office getOfficeByOfficeIdController(@PathVariable int officeId) {
 
         Office office;
 
         try {
-            office = officeDao.getOfficeByOfficeId(id);
+            office = officeDao.getOfficeByOfficeId(officeId);
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -1,6 +1,13 @@
 <template>
     <div>
-        {{ this.office }}
+        
+         <div  v-for="o in this.office" v-bind:key="o.id" > "This is a office: {{o.officeName}}"  {{o}}  </div>    
+    
+         <div  v-for="d in this.doctor" v-bind:key="d.id" > "This is a doctor: {{d.doctorId}}"   {{d}}  </div> 
+ <!-- role doctor only see update button
+    it take them to new office update view
+  -->
+
     </div>
 </template>
 
@@ -26,23 +33,48 @@ export default {
                 phoneNumber: '',
                 email: '',
                 officeHours: '',
+            },
+
+            doctor:{
+                doctorId : '',
+                officeId : '',
+                firstName : '',
+                lastName : '',
+                specialization: '',
+                costPerHour : '',
             }
+
         };
     },
     methods: {
-        listOffices() {
+        listOffices() {  
             OfficeService.getOffices() 
             .then(response => {
+                if (response.status === 200) {
                 this.office = response.data;
-            })
-        },
+          ///  for loop office 
+                OfficeService.getDoctorsByOfficeId( this.office[0].officeId )
+                .then(response => {
+                        this.doctor = response.data;            
+                    })               
+                }
+            })                      
+        }, 
+        
+        
     },
-    created() {
+     created() {
         this.listOffices();
-    }
+      
+     },
+
+
 
 }
 </script>
 
 
-<style></style>
+<style>
+
+
+</style>
