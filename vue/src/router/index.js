@@ -81,6 +81,11 @@ const routes = [
     }
   },
   {
+    path: "/offices/:officeId",
+    name: "OfficeDetailsView",
+    //component: OfficeDetailsView
+  },
+  {
     path: "/scheduleAppointment",
     name: "schedule-appointment",
     component: ScheduleAppointmentView,

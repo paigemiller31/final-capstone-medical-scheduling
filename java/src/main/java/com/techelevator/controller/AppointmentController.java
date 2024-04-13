@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class AppointmentController {
+
     private AppointmentDao appointmentDao;
 
     public AppointmentController(AppointmentDao appointmentDao) {
@@ -33,4 +34,13 @@ public class AppointmentController {
         }
         return result;
     }
+
+
+    //TODO: Get userAppointments by userId
+    //TODO: Get userAppointments by userId, date
+    //TODO: Get doctorAppointments by doctorId
+    //TODO: Get doctorAppointments by doctorId, Date
+
+
+
 }

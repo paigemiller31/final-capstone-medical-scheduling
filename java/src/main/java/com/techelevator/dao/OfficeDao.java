@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface OfficeDao {
 
-    public List<Office> getOfficeList();
+    List<Office> getOfficeList();
 
-    public Office getOfficeByOfficeId(int userId);
+    Office getOfficeByOfficeId(int officeId);
+
+    Office updateOfficeByOfficeId(Office office);
 
 }

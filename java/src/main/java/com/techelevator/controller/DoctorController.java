@@ -18,6 +18,9 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @PreAuthorize("permitAll")
 @RestController
 @CrossOrigin
@@ -27,14 +30,43 @@ public class DoctorController {
         this.doctorDao = doctorDao;
     }
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/doctor", method = RequestMethod.POST)
-    public void createTransfer(@RequestBody Doctor newdoctor) {
+    public void createDoctorController(@RequestBody Doctor newdoctor) {
         try {
             doctorDao.createDoctor(newdoctor);
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR , "doctor API test failed.");
         }
     }
+
+    //TODO: Completed  Get doctor(s) by OfficeID
+    @RequestMapping(path = "/doctor/{officeId}", method = RequestMethod.GET)
+    public List<Doctor> getDoctorsByOfficeIdController(@PathVariable int officeId) {
+        List<Doctor>  result = new ArrayList<>();
+        try {
+            result = doctorDao.getDoctorsByOfficeId( officeId );
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return result;
+    }
+
+
+
+    /** New Endpoint Stubs **/
+//TODO: Retrieve available slots for a doctor
+    /***
+     * Retrieve available slots for a doctor
+     *
+     * @return ?? Object with timeSlot[] Or just a List<timeSlot>
+     */
+    public Object getDoctorAvailability(){
+
+        return null;
+    }
+
+
+
+
 }

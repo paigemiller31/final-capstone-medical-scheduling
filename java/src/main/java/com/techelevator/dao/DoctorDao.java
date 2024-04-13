@@ -2,10 +2,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Doctor;
 
 import javax.print.Doc;
+import java.util.List;
 
 public interface DoctorDao {
 
     // getDoctorByOfficeId and possibly listOfDoctorsByOfficeId
-    public Doctor getDoctorByUserId(int userId);
-    public void createDoctor(Doctor doctor);
+    void createDoctor(Doctor doctor);
+    List<Doctor> getDoctorsByOfficeId(int officeId);
+
 }
