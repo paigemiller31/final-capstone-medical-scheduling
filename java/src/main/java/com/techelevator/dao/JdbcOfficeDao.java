@@ -75,7 +75,7 @@ public class JdbcOfficeDao implements OfficeDao{
         try {
             int rowsAffected = jdbcTemplate.update(sql, office.getOfficeName(), office.getAddressLine1(),
                     office.getAddressLine2(), office.getCity(), office.getState(), office.getZipCode(),
-                    office.getPhoneNumber(), office.getEmail(), office.getOfficeHours());
+                    office.getPhoneNumber(), office.getEmail(), office.getOfficeHours(), office.getOfficeId());
             if (rowsAffected == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             }
