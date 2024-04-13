@@ -1,13 +1,11 @@
 <template>
-    <div>
-        
-         <div  v-for="o in this.office" v-bind:key="o.id" > "This is a office: {{o.officeName}}"  {{o}}  </div>    
+    <div>       
+         <div v-for="o in this.officeList" v-bind:key="o.id" > "This is a office: "  {{o}}  </div>    
     
-         <div  v-for="d in this.doctor" v-bind:key="d.id" > "This is a doctor: {{d.doctorId}}"   {{d}}  </div> 
- <!-- role doctor only see update button
-    it take them to new office update view
-  -->
+         <div v-for="d in this.doctorList" v-bind:key="d.id" >  "This is a doctor: " {{d}}  </div>
 
+         <h1  v-if="$store.state.user.authorities[0].name ===  'ROLE_DOCTOR'"  > Only doctor can Update </h1>
+         
     </div>
 </template>
 
@@ -42,7 +40,11 @@ export default {
                 lastName : '',
                 specialization: '',
                 costPerHour : '',
-            }
+            },
+
+            officeList:[],
+            
+            doctorList:[]
 
         };
     },
@@ -52,22 +54,29 @@ export default {
             .then(response => {
                 if (response.status === 200) {
                 this.office = response.data;
-          ///  for loop office 
-                OfficeService.getDoctorsByOfficeId( this.office[0].officeId )
-                .then(response => {
-                        this.doctor = response.data;            
-                    })               
+                this.officeList.unshift( this.office);  
+
+                this.office.forEach(element => { 
+
+                        OfficeService.getDoctorsByOfficeId( element.officeId )
+                        .then(response => {
+                            this.doctor = response.data;                      
+                            this.doctorList.unshift( response.data);         
+                         })  
+                      
+                    });
+
+                  
+             
                 }
             })                      
-        }, 
-        
+        },         
         
     },
      created() {
         this.listOffices();
       
      },
-
 
 
 }
