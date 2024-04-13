@@ -1,79 +1,80 @@
 <template>
+    <body>
+        <section id="registration-page">
+            <form class="signup-form">
 
-    <div class="main-grid-container">
-      
-        <div class="transparent-box-grid"> 
-  
-            <div id="patient-registration-component"  class="container  transparent-box-grid"> 
-               
-                <div class="header-grid">
+                <div class="form-body">
 
-                      <h2 id="patient-registration-header">Patient &nbsp; Registration</h2>
-        
-                 </div>
+                    <div class="row">
+                        <div class="form-header">
+                            <h1>Patient Registration</h1>
+                        </div>
+                    </div>
 
-                <form class="row g-6"  >
+                    <div class="row">
 
-                     <div class="col-md-6">
-                            <label for="firstName" class="form-label">First name</label>
-                            <input type="text" class="form-control" id="firstName" v-model="patient.firstName" required>
-                     </div>
+                        <div class="input-group">
+                            <label>First Name</label>
+                            <input type="text" id="first-name-input-box" v-model="patient.firstName" required autofocus />
+                        </div>
 
-                     <div class="col-md-6">
-                            <label for="lastName" class="form-label">Last name</label>
-                            <input type="text" class="form-control" id="lastName" v-model="patient.lastName" required>
-                     </div>
-                 
-                     <div class="col-md-6">
-                            <label for="phoneNumber" class="form-label">PhoneNumber</label>
-                            <input type="text" class="form-control" id="phoneNumber" v-model="patient.phoneNumber" required>
-                     </div>
+                        <div class="input-group">
+                            <label>Last Name</label>
+                            <input type="text" id="last-name-input-box" v-model="patient.lastName" required autofocus />
+                        </div>
+                    </div>
 
-                     <div class="col-md-6">
-                            <label for="Email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="Email" v-model="patient.email" required>
-                     </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Address Line 1</label>
+                            <input type="text" id="address1-input-box" v-model="patient.addressLine1" required autofocus />
+                        </div>
+                    </div>
 
-                     <div class="col-md-6">
-                            <label for="Address1" class="form-label"> Address Line 1 </label>
-                            <input type="text" class="form-control" id="Address1"  v-model="patient.addressLine1" required>
-                     </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Address Line 2</label>
+                            <input type="text" id="address2-input-box" v-model="patient.addressLine2" required autofocus />
+                        </div>
+                    </div>
 
-                     <div class="col-md-6">
-                            <label for="Address2" class="form-label"> Address Line 2 </label>
-                            <input type="text" class="form-control" id="Address2" v-model="patient.addressLine2" required>
-                     </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>City</label>
+                            <input type="text" id="city-input-box" v-model="patient.city" required autofocus />
+                        </div>
+                        <div class="input-group">
+                            <label>State</label>
+                            <input type="text" id="state-input-box" v-model="patient.state" required autofocus />
+                        </div>
+                        <div class="input-group">
+                            <label>Zip Code</label>
+                            <input type="text" id="zip-code-input-box" v-model="patient.zipCode" required autofocus />
+                        </div>
+                    </div>
 
-                     <div class="col-md-4">
-                            <label for="City" class="form-label">City</label>
-                            <input type="text" class="form-control" id="City"  v-model="patient.city"  required>
-                     </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Phone Number</label>
+                            <input type="text" id="phone-number-input-box" v-model="patient.phoneNumber" required
+                                autofocus />
+                        </div>
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="text" id="email-address-input-box" v-model="patient.email" required autofocus />
+                        </div>
+                    </div>
 
-                     <div class="col-md-4">
-                            <label for="State" class="form-label">State</label>
-                            <input type="text" class="form-control" id="State"  v-model="patient.state"  required>
-                     </div> 
 
-                     <div class="col-md-4">
-                            <label for="ZipCode" class="form-label">ZipCode</label>
-                            <input type="text" class="form-control" id="ZipCode" v-model="patient.zipCode"  required>
-                     </div>
-                   
-                     <div class="col-md-12" id = "submit-button">
-                            <h1> </h1>   
-      
-                            <button class="btn btn-primary" type="submit" v-on:click.prevent="submitPatientForm()" > Submit form  </button>                         
-                     </div>
-                              
-                 </form>
+                    <button class="btn" type="submit" v-on:click="submitPatientForm()">Submit</button>
 
-            </div>  
+                </div>
 
-        </div> 
-
-  </div> 
- 
+            </form>
+        </section>
+    </body>
 </template>
+
 
 <script>
 
@@ -105,27 +106,27 @@ export default {
 
         submitPatientForm() {
 
-       
+
             // if (!this.validatePatientForm()) {
             //     return;
             // }
             // ^^^ FIX VALIDATE PATIENT FORM later (OR) implement in BOOTSTRAP
- 
+
 
             if (this.$store.state.user.id !== 0) {
-                
+
                 RegisterUserService.registerPatient(this.patient)
                     .then(response => {
-                        if (response.status === 201) { 
-                   
-                            this.$router.push('/');                         
+                        if (response.status === 201) {
+
+                            this.$router.push('/');
                         }
                     })
                     .catch(error => {
                         this.handleErrorResponse(error, 'adding');
                     })
-                }
-            },
+            }
+        },
 
         handleErrorResponse(error, verb) {
 
@@ -199,124 +200,135 @@ export default {
 };
 </script>
 
-<style >
-.main-grid-container {
-    display: grid;
-    grid-template-columns: 1fr 40fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-        ". . ."
-        ". transparent-box-grid ."
-        ". . ."
-    ;
+<style scoped>
+* {
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
     height: 90vh;
+    /* ^^^^^ mess with vh */
 }
 
-.transparent-box-grid {
-    grid-area: transparent-box-grid;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-        ". header ."
-        ". input-container ."
-        ". submit ."
-    ;
-}
-
-#input-container {
-    grid-area: input-container;
+#registration-page {
+    background-color: lightcoral;
+    max-height: 500px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 50px;
 }
 
-.button-grid {
-    grid-area: submit;
+.signup-form {
+    flex: 1;
+    max-height: 500px;
+    max-width: 900px;
+    background-color: aliceblue;
+    /* background-color: rgb(201, 201, 201, 0.5);*/
+    margin-top: 350px;
+    margin-bottom: 300px;
 }
 
-.header-grid {
-    grid-area: header;
-}
-
-/* #patient-registration-header {
-    display: flex;
+.form-header {
+    padding: 15px 0;
     text-transform: uppercase;
-    margin-top: 30px;
-} */
-
-#patient-registration-header {
-    display: flex;
-    text-transform: uppercase;
-    margin-top: 30px;
-    padding: 5pt;
-    display: block;
+    border-bottom: 6px solid yellow;
 }
 
+.form-header h1 {
+    font-size: 28px;
+    text-align: center;
+    color: #000000;
+}
 
-#patient-registration-component {
-    display: grid;
-    grid-area: transparent-box-grid;
-    display: flex;
-    flex-wrap: wrap;
+.form-body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+    padding-top: 50px;
     background-color: rgb(201, 201, 201, 0.5);
-    justify-content: center;
-    width: 60%;
-    justify-self: center;
 }
 
-#name-flex-box {
+.row {
     display: flex;
-    flex-basis: 100%;
-    justify-content: space-evenly;
+    flex-direction: row;
 }
 
-#address-flex-box {
+.input-group {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex-basis: 100%;
-    justify-content: center;
-    align-items: center;
-
-}
-
-#city-state-zip-flex-box {
-    display: flex;
-    flex-basis: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#contact-flex-box {
-    display: flex;
-    flex-basis: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#button {
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
+    height: 10px;
+    margin: 10px 5px;
+    border: 6px solid green;
 }
 
 label {
-    padding: 5pt;
-    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    color: #000000;
 }
 
-input {
-    height: 15px;
-    padding: 7px;
-    border-style: none;
-    border-radius: 3px;
+input[type="text"] {
+    font-size: 18px;
+    height: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #000000;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: white;
     outline: none;
 }
-</style>
 
+#city-input-box {}
+
+#state-input-box {
+    width: 50px;
+}
+
+#zip-code-input-box {
+    width: 100px;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+.form-footer {}
+
+.btn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 3pt;
+    background-color: transparent;
+    border-style: none;
+    border-bottom: solid 1px #000000;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .btn {
+        flex: 1;
+    }
+}
+</style>
 
 
 
