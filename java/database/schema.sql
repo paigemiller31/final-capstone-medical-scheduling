@@ -66,7 +66,8 @@ CREATE TABLE IF NOT EXISTS appointment
     appointment_time TIMESTAMP,
     duration int,
     available BOOLEAN,
-    alert BOOLEAN
+    alert BOOLEAN,
+     CONSTRAINT pk_appointment PRIMARY KEY (appointment_id)
 
 );
 

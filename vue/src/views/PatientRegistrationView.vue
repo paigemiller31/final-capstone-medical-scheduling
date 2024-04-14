@@ -65,9 +65,9 @@
                         </div>
                     </div>
 
-<div id="submit-button">
-                    <button class="btn" type="submit" v-on:click="submitPatientForm()">Submit</button>
-                </div>
+                    <div id="submit-button">
+                        <button class="btn" type="submit" v-on:click.prevent="submitPatientForm()">Submit</button>
+                    </div>
 
                 </div>
 
@@ -120,7 +120,7 @@ export default {
                     .then(response => {
                         if (response.status === 201) {
 
-                            this.$router.push('/');
+                            this.$router.push({name: 'home'});
                         }
                     })
                     .catch(error => {
@@ -210,11 +210,10 @@ export default {
 html,
 body {
     height: 90vh;
-    /* ^^^^^ mess with vh */
 }
 
 #registration-page {
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
     max-height: 500px;
     display: flex;
     justify-content: center;
@@ -225,22 +224,24 @@ body {
     flex: 1;
     max-height: 500px;
     max-width: 900px;
-    background-color: aliceblue;
-    /* background-color: rgb(201, 201, 201, 0.5);*/
+    /* background-color: aliceblue; */
     margin-top: 350px;
     margin-bottom: 300px;
 }
 
 .form-header {
-    padding: 15px 0;
-    text-transform: uppercase;
-    border-bottom: 6px solid yellow;
+    padding: 20px 0;
 }
 
 .form-header h1 {
     font-size: 28px;
     text-align: center;
     color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 22pt;
+    text-transform: uppercase;
+    padding-left: 20px;
 }
 
 .form-body {
@@ -250,9 +251,8 @@ body {
     margin-right: 70px;
     padding-right: 100px;
     padding-left: 100px;
-    padding-bottom: 100px;
     padding-top: 50px;
-    background-color: rgb(201, 201, 201, 0.5);
+    background-color: rgba(219, 219, 219, 0.5);
 }
 
 .row {
@@ -266,33 +266,35 @@ body {
     flex-direction: column;
     height: 10px;
     margin: 10px 5px;
-    border: 6px solid green;
+    padding-bottom: 30px;
+    padding-left: 17px;
+    padding-right: 17px;
 }
 
 label {
-    font-size: 17px;
+    font-size: 11px;
     font-weight: 500;
     color: #000000;
+    padding-bottom: 6px;
 }
 
 input[type="text"] {
-    font-size: 18px;
-    height: 34px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
     padding-left: 10px;
     padding-right: 10px;
     color: #000000;
-    border: 1px solid #d6d6d6;
-    border-radius: 4px;
-    background: white;
+    height: 15px;
+    padding: 7px;
+    border-style: none;
+    border-radius: 3px;
     outline: none;
 }
 
-#state-input-box {
-    width: 50px;
-}
-
+#city-input-box,
+#state-input-box,
 #zip-code-input-box {
-    width: 100px;
+    width: 128px;
 }
 
 @media only screen and (max-width: 500px) {
