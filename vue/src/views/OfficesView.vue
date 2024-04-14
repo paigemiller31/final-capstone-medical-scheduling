@@ -1,12 +1,14 @@
 <template>
     <div>
-        
+
         <div v-for="office in this.officeList" v-bind:key="office.id"> "This is a office: " {{ office }} </div>
 
         <div v-for="doctor in this.doctorList" v-bind:key="doctor.id"> "This is a doctor: " {{ doctor }} </div>
 
         <h1 v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'"> Only doctor can Update </h1>
-
+        
+        
+       <!-- <offices/> -->
         <offices v-bind:office="office" />
     </div>
 </template>
@@ -14,11 +16,11 @@
 <script>
 
 import OfficeService from '../services/OfficeService';
-import Offices from '../components/Offices.vue';
+// import Offices from '../components/Offices.vue';
 
 export default {
     components: {
-        Offices,
+       // Offices,
     },
     data() {
         return {
@@ -71,8 +73,17 @@ export default {
                 });
         },
         // we need this method to get itemized/separated office things, like office.officeName, office.phoneNumber, etc.
-        getOfficeByOfficeId() {
-            
+        getOfficeByOfficeId(officeId) {
+            OfficeService.getOfficeByOfficeId(officeId)
+                .then(response => {
+                    if (response.status == 200) {
+                        this.office = response.data;
+                    }
+                })
+                .catch(error => {
+                    this.handleErrorResponse(error);
+                });
+
         },
         handleErrorResponse(error) {
             if (error.response.status == 404) {
@@ -85,6 +96,7 @@ export default {
     },
     created() {
         this.listOffices();
+        this.getOfficeByOfficeId(this.$route.params.officeId);
     },
 }
 </script>
