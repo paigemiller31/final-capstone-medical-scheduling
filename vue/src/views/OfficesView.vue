@@ -1,28 +1,30 @@
 <template>
 
+<h1 v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'"> Only doctor can Update </h1>
+
     <div>       
         <div v-for="o in this.officeList" v-bind:key="o.officeId" >
             *************
             **** Hospital Details ****
             *************
-            <li> officeName:  {{o.officeName}} </li>
-            <li> addressLine1 : {{ o.addressLine1 }} </li>
-            <li> addressLine2 : {{  o.addressLine2}} </li>
-            <li> city : {{ o.city }} </li>
-            <li> state: {{  o.state}} </li>
-            <li> zipCode:  {{ o.zipCode }} </li>
-            <li> phoneNumber : {{ o.phoneNumber }} </li>
-            <li> email : {{ o.email }} </li>
-            <li> officeHours :  {{ o.officeHours}} </li>
+            <li>{{o.officeName}}</li>
+            <li>{{o.addressLine1}}</li>
+            <!-- <li>{{o.addressLine2}}</li> -->
+            <li>{{o.city}}, {{o.state}} {{o.zipCode}}</li>
+            <!-- <li>{{o.state}}</li> -->
+            <!-- <li>{{o.zipCode}}</li> -->
+            <li>{{o.phoneNumber}}</li>
+            <li>{{o.email}}</li>
+            <li>{{o.officeHours}}</li>
                    
         <div v-for="d in this.filterDoctors(o.officeId)" v-bind:key="d.doctorId" > 
             
             ****** List of Doctors available ******
 
-            <li> firstName:  {{ d.firstName}} </li>
-            <li> lastName:  {{ d.lastName }} </li>
-            <li> specialization:  {{ d.specialization }} </li>
-            <li> costPerHour:  {{ d.costPerHour}} </li>
+            <li>{{d.firstName}} {{d.lastName}}</li>
+            <!-- <li>{{ d.lastName }}</li> -->
+            <li>{{d.specialization}}</li>
+            <li>${{d.costPerHour}}.00 per hour</li>
 
           </div>    </div> 
              

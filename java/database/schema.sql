@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS office
 	zip_code VARCHAR (15),
 	phone_number VARCHAR(15),
 	email VARCHAR(64),
-	office_hours VARCHAR(15),
+	office_hours VARCHAR(30),
 	CONSTRAINT PK_office PRIMARY KEY (office_id)
 
 	);
