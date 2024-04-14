@@ -1,27 +1,38 @@
 <template>
     <div v-for="o in this.officeList" v-bind:key="o.officeId"> "This is a office: " {{ o.officeName }} </div>
     <!--list of offices, officeName only-->
-
+    <p></p>
     <div v-for="d in this.doctorList" v-bind:key="d.doctorId"> "This is a doctor: " {{ d.firstName }} </div>
     <!--one doctor, first name-->
-
-    <div v-for="office in this.officeList" v-bind:key="office.id"> "This is a office: " {{ office }} </div>
+    <p></p>
+   <!-- <div v-for="office in this.officeList" v-bind:key="office.id"> "This is a office: " {{ office }} </div> -->
     <!--list of offices, all parts-->
-
+    <p></p>
     <div v-for="doctor in this.doctorList" v-bind:key="doctor.id"> "This is a doctor: " {{ doctor }} </div>
     <!--one doctor, all parts-->
 
+    <p></p>
 
+   <!-- <div v-for="office in this.officeList" v-bind:key="office.id"> "this is a LIST of offices: " {{ office }} </div> -->
 
-        <!--<div v-for="office in this.officeList" v-bind:key="office.id"> "this is a LIST of offices: " {{ office }} </div>-->
+    <p></p>
 
-        <!--<div v-for="office in office" v-bind:key="office.id"> "This is a office: " {{ office }} </div>-->
+    <div v-for="office in office" v-bind:key="office.id"> "This is a office: " {{ office }} </div>
 
-        <div v-for="office in this.office" v-bind:key="office.id">  {{ office.officeName }} </div> 
-        
-        <div v-for="office in this.office" v-bind:key="office.id">  {{ office.addressLine1 }} </div>
+    <p></p>
 
-        <div v-for="doctor in this.doctorList" v-bind:key="doctor.id"> "This is LIST of doctors: " {{ doctor }} </div>
+    <!-- these next two divs are correlating with the second method -->
+    <div v-for="office in this.office" v-bind:key="office.id"> {{ office.officeName }} </div>
+
+    <p></p>
+
+    <div v-for="office in this.office" v-bind:key="office.id"> {{ office.addressLine1 }} </div>
+
+    <p></p>
+
+    <div v-for="doctor in this.doctor" v-bind:key="doctor.id"> {{ doctor.firstName }} </div>
+
+    <div v-for="doctor in this.doctorList" v-bind:key="doctor.id"> "This is LIST of doctors: " {{ doctor }} </div>
 
 
 
@@ -86,7 +97,8 @@ export default {
     },
     methods: {
 
-
+         /*
+        //This one has the ability to identify qualities of an office, but still in a list form -- like name1, name2, so on and so forth
         // VIVEK'S OG
         listOffices() {
             OfficeService.getOffices()
@@ -101,12 +113,14 @@ export default {
                         });
                     }
                 })
-        },
+        }, 
+        
+        */
 
 
-
-
-        /*  // VIVEK'S OTHER ONE, I GUESS
+        
+          // VIVEK'S OTHER ONE, I GUESS
+          // doing the same exact thing as the method above ^
 
                 listOffices() { 
                     OfficeService.getOffices()
@@ -127,11 +141,12 @@ export default {
                             this.handleErrorResponse(error);
                         });
                 },
-        */
-
+        
+                
 
 
         // PAIGE'S DUMMY
+        // list offices but no doctor
         /*
         listOffices() {
     
@@ -155,9 +170,9 @@ export default {
                     .catch(error => {
                         this.handleErrorResponse(error);
                     });
-            },
-        */
-
+            }, */
+        
+        /*
         // PAIGE'S DUMMY
         getOfficeByOfficeId(officeId) {
             OfficeService.getOfficeByOfficeId(officeId)
@@ -167,18 +182,20 @@ export default {
                         this.office.officeName = response.data;
                         this.office.officeAddressLine1 = response.data;
                     }
-                    
+
 
                 })
                 .catch(error => {
                     this.handleErrorResponse(error);
                 });
         },
+        */
+        
 
 
-
+        
         // VIVEK'S
-        /*
+        
         getOfficeByOfficeId(officeId) {
             OfficeService.getOfficeByOfficeId(officeId)
                 .then(response => {
@@ -191,8 +208,8 @@ export default {
                 });
 
         }, 
-        */
-
+        
+        
 
 
 
