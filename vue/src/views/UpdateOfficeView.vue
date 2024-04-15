@@ -100,32 +100,42 @@ export default {
                 officeHours: '',
             },
             editOffice: {
-                officeId: this.office.officeId,
-                officeName: this.office.officeName,
-                addressLine1: this.office.addressLine1,
-                addressLine2: this.office.addressLine2,
-                city: this.office.city,
-                state: this.office.state,
-                zipCode: this.office.zipCode,
-                phoneNumber: this.office.phoneNumber,
-                email: this.office.email,
-                officeHours: this.office.officeHours,
+                officeId: '',
+                officeName: '',
+                addressLine1: '',
+                addressLine2: '',
+                city: '',
+                state: '',
+                zipCode: '',
+                phoneNumber: '',
+                email: '',
+                officeHours: '',
             },
+
         }
     },
     methods: {
+
+        accessOffice(officeId) {
+            OfficeService.getOfficeByOfficeId(officeId)
+                .then(response => {
+                    this.editOffice = response.data
+                })
+        },
+
         submitForm() {
-            if (this.editOffice.officeId === 0) {
                 OfficeService.updateOfficeById(this.editOffice)
                     .then(response => {
                         if (response.status === 200) {
-                            this.$router.push({ name: 'home' });
+                            this.$router.push({ name: 'offices' });
                         }
                     })
-            }
         }
+    },
+    created() {
+        this.accessOffice(this.$route.params.officeId);
     }
-};
+}
 </script>
 
 <style scoped>
@@ -216,6 +226,13 @@ input[type="text"] {
     border-style: none;
     border-radius: 3px;
     outline: none;
+}
+
+/* FIGURE OUT HOW TO MAKE THIS PLACEHOLDER TEXT STYLE */
+input::placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7pt;
+  color: rgb(210, 210, 210);
 }
 
 #city-input-box,

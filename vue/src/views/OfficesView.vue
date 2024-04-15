@@ -1,46 +1,61 @@
 <template>
-    <div>
-        <div v-for="o in this.officeList" v-bind:key="o.officeId">
-            *************
-            **** Hospital Details ****
-            *************
-            <li>{{ o.officeName }}</li>
-            <li>{{ o.addressLine1 }}</li>
-            <!-- <li>{{o.addressLine2}}</li> -->
-            <li>{{ o.city }}, {{ o.state }} {{ o.zipCode }}</li>
-            <!-- <li>{{o.state}}</li> -->
-            <!-- <li>{{o.zipCode}}</li> -->
-            <li>{{ o.phoneNumber }}</li>
-            <li>{{ o.email }}</li>
-            <li>{{ o.officeHours }}</li>
+    <body>
+        <div class="home">
+            <div class="form-body">
 
-            <div v-for="d in this.filterDoctors(o.officeId)" v-bind:key="d.doctorId">
+                <h1 class="main-header">Offices</h1>
 
-                ****** List of Doctors available ******
 
-                <li>{{ d.firstName }} {{ d.lastName }}</li>
-                <!-- <li>{{ d.lastName }}</li> -->
-                <li>{{ d.specialization }}</li>
-                <li>${{ d.costPerHour }}.00 per hour</li>
+                <div>
+                    <div v-for="o in this.officeList" v-bind:key="o.officeId">
+                        *************
+                        **** Hospital Details ****
+                        *************
+                        <li>{{ o.officeName }}</li>
+                        <li>{{ o.addressLine1 }}</li>
+                        <li>{{o.addressLine2}}</li>
+                        <li>{{ o.city }}, {{ o.state }} {{ o.zipCode }}</li>
+                        <!-- <li>{{o.state}}</li> -->
+                        <!-- <li>{{o.zipCode}}</li> -->
+                        <li>{{ o.phoneNumber }}</li>
+                        <li>{{ o.email }}</li>
+                        <li>{{ o.officeHours }}</li>
 
-            </div>
-        </div>
+                        <div v-for="d in this.filterDoctors(o.officeId)" v-bind:key="d.doctorId">
 
-        <ul id="update-button" v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
-            <li v-for="office in officeList" v-bind:key="office.officeId">
-                <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/edit'}">
-                    <button v-bind:officeId="office.officeId">Update</button>
-                </router-link>
-            </li>
-        </ul>
+                            ****** List of Doctors available ******
 
-        <!--
+                            <li>{{ d.firstName }} {{ d.lastName }}</li>
+                            <!-- <li>{{ d.lastName }}</li> -->
+                            <li>{{ d.specialization }}</li>
+                            <li>${{ d.costPerHour }}.00 per hour</li>
+
+                        </div>
+                    </div>
+
+                    <ul id="update-button" v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
+                        <li v-for="office in officeList" v-bind:key="office.officeId">
+                            <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/edit' }">
+                                <button v-bind:officeId="office.officeId">Update</button>
+                            </router-link>
+                        </li>
+                    </ul>
+
+                    <!--
         <div v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
             <button v-for="office in officeList" v-bind:office="office" v-bind:key="office.officeId" v-on:click.prevent="$router.push('/office/:officeId/edit')">UPDATE</button>
         </div>
         -->
 
-    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </body>
 </template>
 
 <script>
@@ -141,4 +156,31 @@ export default {
 </script>
 
 
-<style></style>
+<style scoped>
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+}
+
+body {
+    overflow: hidden;
+}
+
+.main-header {
+    text-transform: uppercase;
+    text-justify: center;
+    text-align: center;
+    padding-top: 25px;
+    font-weight: 100;
+    font-size: 25pt;
+}
+
+.form-body {
+    background-color: rgba(219, 219, 219, 0.5);
+    margin-top: 75px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+    margin-right: 70px;
+    width: 100vh
+}
+</style>
