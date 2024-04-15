@@ -11,6 +11,7 @@ import DoctorRegistrationView from '../views/DoctorRegistrationView.vue';
 import OfficesView from '../views/OfficesView.vue';
 import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
 import MyAppointmentsView from '../views/MyAppointmentsView.vue';
+import UpdateOfficeView from '../views/UpdateOfficeView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -56,7 +57,7 @@ const routes = [
       requiresAuth: false
     }
   },
-   {
+  {
     path: "/patientRegistration",
     name: "patient-registration",
     component: PatientRegistrationView,
@@ -81,11 +82,11 @@ const routes = [
     }
   },
   {
-    path: "/offices/:officeId",
-    name: "OfficeDetailsView",
-    //component: OfficeDetailsView
+    path: "/offices/:officeId/edit",
+    name: "update-office",
+    component: UpdateOfficeView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -122,7 +123,7 @@ router.beforeEach((to) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+    return { name: "login" };
   }
   // Otherwise, do nothing and they'll go to their next destination
 });
