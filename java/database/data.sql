@@ -142,5 +142,33 @@ WHERE
     doctor_id = 11;
 
 
+INSERT INTO reviews ( office_id,  review )
+VALUES ( 1, 'I highly recommend this hospital office for its exceptional service and attention to patient needs' )   ;
+
+INSERT INTO reviews ( office_id,  review)
+VALUES ( 1, 'Clean and organized environment, making my visit to the hospital office comfortable' )  RETURNING review_id ;
+
+INSERT INTO reviews ( office_id,  review)
+VALUES ( 1, 'The staff was friendly and professional, providing prompt assistance' )  RETURNING review_id ;
+
+INSERT INTO reviews ( office_id,  review )
+VALUES ( 2, 'Impressed by the professionalism of the doctors and nurses at this hospital office.' )  RETURNING review_id ;
+
+INSERT INTO reviews ( office_id, review )
+VALUES ( 2, 'They took the time to listen to my concerns and provided thorough explanations' )  RETURNING review_id ;
+
+INSERT INTO reviews ( office_id,  review )
+VALUES ( 3, 'I highly recommend this hospital office for its exceptional service and attention to patient needs' )  RETURNING review_id ;
+
+INSERT INTO reviews ( office_id,  review )
+VALUES ( 3, 'Every aspect of my experience, from scheduling to discharge, was handled with care and expertise' )  RETURNING review_id ;
+
+INSERT INTO reviews ( office_id, review )
+VALUES ( 3, 'The attention to detail and patient-centric approach made all the difference' )  RETURNING review_id ;
+
+
+
+
+
 
 COMMIT TRANSACTION;

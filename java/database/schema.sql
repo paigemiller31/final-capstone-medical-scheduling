@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
 
-DROP TABLE IF EXISTS  patient, doctor, office, users CASCADE;
+DROP TABLE IF EXISTS  reviews, patient, doctor, office, users CASCADE;
 	
 
 CREATE TABLE users (
@@ -71,6 +71,18 @@ CREATE TABLE IF NOT EXISTS appointment
 
 );
 
+
+CREATE TABLE IF NOT EXISTS reviews
+(
+    review_id SERIAL,
+    office_id int,
+    stars int,
+    review VARCHAR (256),
+	response VARCHAR (256),
+	CONSTRAINT PK_review PRIMARY KEY (review_id),
+	CONSTRAINT FK_review_office FOREIGN KEY (office_id) REFERENCES office (office_id)
+
+);
 
 COMMIT TRANSACTION;
 
