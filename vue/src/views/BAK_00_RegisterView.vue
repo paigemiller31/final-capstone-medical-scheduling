@@ -1,4 +1,7 @@
 <template>
+  
+<!-- DELETE THIS COPY -->
+
   <body>
     <div id="register" class="text-center">
       <form v-on:submit.prevent="register">

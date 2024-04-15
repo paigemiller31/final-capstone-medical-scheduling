@@ -107,12 +107,11 @@ export default {
 
         submitPatientForm() {
 
+            // FIX THE validatePatientForm METHOD
 
             // if (!this.validatePatientForm()) {
             //     return;
             // }
-            // ^^^ FIX VALIDATE PATIENT FORM later (OR) implement in BOOTSTRAP
-
 
             if (this.$store.state.user.id !== 0) {
 

@@ -1,4 +1,7 @@
 <template>
+    
+<!-- DELETE THIS COPY -->
+
     <div class="main-grid-container">
 
         <div class="transparent-box-grid">

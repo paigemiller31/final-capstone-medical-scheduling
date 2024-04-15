@@ -1,35 +1,31 @@
 <template>
-  <div class="home">
-    
-    <div class="form-body">
+  <body>
+    <div class="home">
+      <div class="form-body">
 
-      <h1 class="main-header">Medical Scheduling Group</h1>
-      
-      <div id="logo-component">
-        <img src="src\assets\home.JPG">
+        <h1 class="main-header">Medical Scheduling Company</h1>
+
+        <div id="logo">
+          <img src="src\assets\home.JPG">
+        </div>
+
+        <article id="info">
+          <li class="header-2">For Patients:</li>
+          
+          <li class="description">Effortless Scheduling: Find the right doctor, view their availability, and book appointments directly - all in one place.</li>
+          <li class="description">Improved Access to Care: Eliminate phone calls and schedule appointments at your convenience.</li>
+
+          <li class="header-2">For Doctors:</li>
+
+          <li class="description">Centralized Management: Manage your schedule seamlessly and receive real-time appointment notifications.</li>
+          <li class="description">Increased Patient Satisfaction: Offer convenient online booking, reducing phone traffic and wait times.</li>
+
+          <li class="foot-text">Secure, efficient scheduling for doctors and patients. Sign up and simplify your healthcare experience today!</li>
+        </article>
+
       </div>
-      <article id="info-component">
-        <h2 class="header">For Patients:</h2>
-
-        <section class="info">
-          - Effortless Scheduling: Find the right doctor, view their availability, and book appointments directly -
-          all in one place.
-          <br>- Improved Access to Care: Eliminate phone calls and schedule appointments at your convenience.
-        </section>
-
-          <h2 class="header">For Doctors:</h2>
-
-        <section class="info">
-          - Centralized Management: Manage your schedule seamlessly and receive real-time appointment notifications.
-          <br>- Increased Patient Satisfaction: Offer convenient online booking, reducing phone traffic and wait times.
-        </section>
-        <p>Secure, efficient scheduling for doctors and patients. Sign up and simplify your healthcare experience today!
-        </p>
-      </article>
-
     </div>
-
-  </div>
+  </body>
 </template>
 
 <script>
@@ -37,7 +33,7 @@ export default {
 
   /*
    * USE THIS MOUNTED LIFECYCLE HOOK TO PUSH USERS TO LOGIN IF THEY AREN'T LOGGED IN*
-   * --> TOTALLY OPTIONAL BECAUSE SHELBY TOLD ME SHE DIDN'T WANT THIS (AND THEN PAIGE DEFENDED HER(AND THEY WERE BOTH RIGHT(AS USUAL)))<--
+   * --> TOTALLY OPTIONAL BECAUSE SHELBY TOLD ME SHE DIDN'T WANT THIS (AND THEN PAIGE DEFENDED HER(AND THEY WERE BOTH RIGHT(AS USUAL))) <--
    */
 
   /* mounted() {
@@ -54,7 +50,11 @@ export default {
 <style scoped>
 * {
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
+  color: #000000;
+}
+
+body {
+  overflow: hidden;
 }
 
 .main-header {
@@ -62,7 +62,7 @@ export default {
   text-transform: uppercase;
   text-justify: center;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 25px;
   font-weight: 100;
   font-size: 25pt;
 }
@@ -83,26 +83,58 @@ export default {
     'header header'
     'logo info';
   background-color: rgba(219, 219, 219, 0.5);
-  margin-top: 50px;
+  margin-top: 75px;
   margin-bottom: 50px;
   margin-left: 30px;
   margin-right: 70px;
-  height: 90vh;
-  
+  height: 60vh;
+  width: 100vh
 }
 
-#logo-component {
+#logo {
   grid-area: logo;
-  padding: 50px;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  padding-left: 20px;
 
 }
 
-#info-component {
+#info {
   grid-area: info;
-  padding: 50px;
+  padding-top: 60px;
+  padding-right: 65px;
+}
+
+#footer {
+  grid-area: footer;
 }
 
 img {
- max-height: 45%;
+  max-height: 45%;
 }
-</style>
+
+li {
+  margin-bottom: 5px;
+  list-style: none;
+}
+
+.header-2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13pt;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.description {
+  font-size: 10pt;
+}
+
+.foot-text {
+  margin-top: 13px;
+  font-size: 11.5pt;
+  font-style: italic;
+  padding-top: 7px;
+}</style>

@@ -2,9 +2,10 @@
   <body>
     <div>
       <form v-on:submit.prevent="login">
+        <!-- THIS IS NO LONGER BEING IMPLEMENTED, BUT IT MIGHT COME IN HANDY LATER -->
         <div role="alert" v-if="this.$route.query.registration">
           Thank you for registering, please sign in.
-        </div> <!-- ^^^ move this later -->
+        </div>
         <div class="container">
           <div class="login-component">
             <h1 id="login-header">Login</h1>
@@ -72,6 +73,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -81,7 +83,7 @@ export default {
     ". login ."
     ". register ."
   ;
-  height: 90vh;
+  height: 88vh;
 }
 
 .login-component {
@@ -90,7 +92,7 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 150px;
+  margin-bottom: 250px;
 }
 
 .register-component {
@@ -99,6 +101,7 @@ export default {
   justify-content: end;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 body {

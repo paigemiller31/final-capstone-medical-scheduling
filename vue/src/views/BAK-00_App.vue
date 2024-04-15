@@ -1,4 +1,7 @@
 <template>
+
+<!-- DELETE THIS COPY -->
+
   <div id="capstone-app">
     <div id="nav">
 

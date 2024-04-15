@@ -167,7 +167,7 @@ export default {
     ". register ."
     ". login ."
   ;
-  height: 90vh;
+  height: 88vh;
 }
 
 .register-component {
@@ -176,7 +176,7 @@ export default {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 150px;
+  margin-bottom: 250px;
 }
 
 .login-component {
@@ -185,6 +185,7 @@ export default {
   justify-content: end;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 body {
