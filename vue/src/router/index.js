@@ -12,6 +12,7 @@ import OfficesView from '../views/OfficesView.vue';
 import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
 import MyAppointmentsView from '../views/MyAppointmentsView.vue';
 import UpdateOfficeView from '../views/UpdateOfficeView.vue';
+import DoctorsView from '../views/DoctorsView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -87,6 +88,14 @@ const routes = [
     component: UpdateOfficeView,
     meta: {
       requiresAuth: true
+    }
+  },
+  {
+    path: "/offices/:officeId/doctors",
+    name: "doctors",
+    component: DoctorsView,
+    meta: {
+      requiresAuth: false
     }
   },
   {
