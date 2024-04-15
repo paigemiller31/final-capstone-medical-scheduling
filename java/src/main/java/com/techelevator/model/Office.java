@@ -1,6 +1,8 @@
 package com.techelevator.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Office {
@@ -14,6 +16,7 @@ public class Office {
     private String phoneNumber;
     private String email;
     private String officeHours;
+    private List<Doctor> officeDoctors = new ArrayList<>();
 
     public Office() {
 
@@ -34,6 +37,7 @@ public class Office {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.officeHours = officeHours;
+
     }
 
 
@@ -118,6 +122,11 @@ public class Office {
         this.officeHours = officeHours;
     }
 
+    public List<Doctor> getOfficeDoctors() {
+        return officeDoctors;
+    }
 
-
+    public void setOfficeDoctors(List<Doctor> officeDoctors) {
+        this.officeDoctors = officeDoctors;
+    }
 }

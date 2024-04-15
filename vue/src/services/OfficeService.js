@@ -18,4 +18,9 @@ export default {
         return axios.put(`/offices/${office.officeId}`, office);
     },
 
+    // NEW VERSION OF API CALL TO GET OFFICES THAT EACH HAVE-A LIST OF DOCTORS
+    getOfficesDeep() {
+        return axios.get('/offices-details');
+    }
+
 }

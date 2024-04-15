@@ -13,6 +13,8 @@ import OfficeCard from './OfficeCard.vue';
 import OfficeService from '../services/OfficeService';
 
 export default {
+
+  
   computed: {
     offices() {
       let id = this.$route.params.officeId;

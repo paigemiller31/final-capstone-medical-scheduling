@@ -9,6 +9,8 @@ import RegisterView from '../views/RegisterView.vue';
 import PatientRegistrationView from '../views/PatientRegistrationView.vue';
 import DoctorRegistrationView from '../views/DoctorRegistrationView.vue';
 import OfficesView from '../views/OfficesView.vue';
+
+
 import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
 import MyAppointmentsView from '../views/MyAppointmentsView.vue';
 import UpdateOfficeView from '../views/UpdateOfficeView.vue';
@@ -82,6 +84,7 @@ const routes = [
       requiresAuth: false
     }
   },
+
   {
     path: "/offices/:officeId/edit",
     name: "update-office",
