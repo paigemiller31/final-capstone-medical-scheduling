@@ -33,7 +33,23 @@
                         </div>
                     </div>
 
+
+
+                    <!-- <ul id="update-button" v-if="$store.state.user.authorities[0].name === 'ROLE_USER'"> -->
+                        ****** For patients to VIEW DOCTORS for OFFICES ******
+                        <li v-for="office in officeList" v-bind:key="office.officeId">
+                            <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/doctors' }">
+                                <button v-bind:officeId="office.officeId">View Doctors for this Office</button>
+                            </router-link>
+                        </li>
+                    <!-- </ul> -->
+
+                
+
+
+
                     <ul id="update-button" v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
+                        ****** For doctors to UPDATE OFFICES ******
                         <li v-for="office in officeList" v-bind:key="office.officeId">
                             <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/edit' }">
                                 <button v-bind:officeId="office.officeId">Update</button>
@@ -48,11 +64,6 @@
         -->
 
                 </div>
-
-
-
-
-
             </div>
         </div>
     </body>
@@ -80,7 +91,6 @@ export default {
                 email: '',
                 officeHours: '',
             },
-
             doctor: {
                 doctorId: '',
                 officeId: '',
@@ -89,16 +99,9 @@ export default {
                 specialization: '',
                 costPerHour: '',
             },
-
             officeList: [],
-
             doctorList: []
-
         };
-    },
-    computed: {
-
-
     },
     methods: {
         listOffices() {
@@ -113,12 +116,8 @@ export default {
                                 .then(response => {
                                     this.doctor = response.data;
                                     this.doctorList.push(this.doctor);
-
-
-
                                 })
                         });
-
                     }
                 })
         },
@@ -137,20 +136,9 @@ export default {
 
             return ddd;
         },
-
-        /* THIS IS NONSENSE. IGNORE IT.
-        updateOfficeFilter() {
-            return this.officeList.filter((office) => {
-                return office.officeId === true;
-            });
-        },
-        */
-
-
     },
     created() {
         this.listOffices();
-
     }
 }
 </script>
