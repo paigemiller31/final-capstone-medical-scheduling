@@ -1,11 +1,16 @@
 <template>
     <div class="doctor-main">
-        
-            <div>{{ doctor.firstName + " " + doctor.lastName + " "}}</div>
-            <div>{{ doctor.specialization + " "}}</div>
-            <div>${{ doctor.costPerHour }}.00 per hour</div>
-        
 
+        <div>{{ doctor.firstName + " " + doctor.lastName + " " }}</div>
+        <div>{{ doctor.specialization + " " }}</div>
+        <div>${{ doctor.costPerHour }}.00 per hour</div>
+
+        <div class="appointment-button">
+            <router-link class="router-link" v-bind:to="{ name: 'doctors', params: { doctorId } }">
+                Schedule an Appointment
+            </router-link>
+
+        </div>
     </div>
 </template>
 
@@ -22,7 +27,4 @@ export default {
 </script>
 
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

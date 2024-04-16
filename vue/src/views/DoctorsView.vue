@@ -5,8 +5,11 @@
                 <div class="doctors-info-row">
                     <doctor v-for="doctor in doctorList" v-bind:key="doctor.doctorId" v-bind:doctor="doctor" />
                 </div>
-
-
+                <!--calendar drop down right underneath name-->
+                <div class="bio-section">
+                    
+                </div>
+                
 
 
 
@@ -112,5 +115,9 @@ body {
     margin-left: 30px;
     margin-right: 70px;
     width: 100vh
+}
+
+.bio-section {
+    display: flex;
 }
 </style>
