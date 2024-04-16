@@ -15,6 +15,22 @@
       <div class="hours-line">
         <div class="address">{{ office.officeHours }}</div>
       </div>
+
+      <div class="appointment-button">
+      
+      <router-link class= "router-link" v-bind:to="{ name: 'reviews', params: { officeId: office.officeId } }">
+       See Reviews
+    </router-link>
+    </div>
+    <br />
+    <div class="appointment-button">
+    
+    <router-link class= "router-link" v-bind:to="{ name: 'addReview', params: { officeId: office.officeId } }">
+      Add Review
+    </router-link>
+  </div>
+
+
     </div>
     <br>
 
