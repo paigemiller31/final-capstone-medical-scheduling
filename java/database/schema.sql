@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
 
-DROP TABLE IF EXISTS  reviews, patient, doctor, office, users CASCADE;
+DROP TABLE IF EXISTS  appointment, reviews, patient, doctor, office, users CASCADE;
 	
 
 CREATE TABLE users (
@@ -58,16 +58,19 @@ CREATE TABLE IF NOT EXISTS doctor
 );
 
 CREATE TABLE IF NOT EXISTS appointment
+
 (
-    appointment_id int,
-    patient_id int,
-    doctor_id int,
-    appointment_date DATE,
-    appointment_time TIMESTAMP,
-    duration int,
-    available BOOLEAN,
-    alert BOOLEAN,
-     CONSTRAINT pk_appointment PRIMARY KEY (appointment_id)
+    appointment_id SERIAL,
+    patient_id integer,
+    doctor_id integer,
+    appointment_date date,
+    appointment_time TIME,
+    duration integer,
+    available boolean,
+    alert boolean,
+    CONSTRAINT PK_appointment PRIMARY KEY (appointment_id),
+    CONSTRAINT FK_appointment_doctor FOREIGN KEY (doctor_id) REFERENCES doctor (doctor_id),
+    CONSTRAINT FK_appointment_patient FOREIGN KEY (patient_id) REFERENCES patient (patient_id)
 
 );
 

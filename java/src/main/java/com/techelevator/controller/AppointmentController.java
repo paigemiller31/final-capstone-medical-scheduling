@@ -24,6 +24,7 @@ public class AppointmentController {
         this.appointmentDao = appointmentDao;
     }
 
+    // this is for patients to see their appointments
     @RequestMapping(path = "/appointments/{patientId}", method = RequestMethod.GET)
     public List<Appointment> getAppointmentByPatientIdController(@PathVariable int patientId) {
         List<Appointment> result = new ArrayList<>();
@@ -35,6 +36,8 @@ public class AppointmentController {
         }
         return result;
     }
+
+    // this is for doctors to see their appointments
     @RequestMapping(path = "/appointments/{doctorId}", method = RequestMethod.GET)
     public List<Appointment> getAppointmentByDoctorIdController(@PathVariable int doctorId) {
         List<Appointment> result = new ArrayList<>();

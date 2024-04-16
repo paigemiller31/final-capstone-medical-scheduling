@@ -18,14 +18,19 @@
                             <input type="text" id="first-name-input-box" v-model="editOffice.officeName" required
                                 autofocus />
                         </div>
-
+                        <div class="input-group">
+                            <label>Office Hours</label>
+                            <input type="text" id="address1-input-box" v-model="editOffice.officeHours" required
+                                autofocus />
+                        </div>
                        
                     </div>
+
 
                     <div class="row">
                         <div class="input-group">
                             <label>Address Line 1</label>
-                            <input type="text" id="address1-input-box" v-model="editOffice.addressLine2" required
+                            <input type="text" id="address1-input-box" v-model="editOffice.addressLine1" required
                                 autofocus />
                         </div>
                     </div>
@@ -33,22 +38,22 @@
                     <div class="row">
                         <div class="input-group">
                             <label>Address Line 2</label>
-                            <input type="text" id="address2-input-box" v-model="editOffice.city" required autofocus />
+                            <input type="text" id="address2-input-box" v-model="editOffice.addressLine2" required autofocus />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-group">
                             <label>City</label>
-                            <input type="text" id="city-input-box" v-model="editOffice.state" required autofocus />
+                            <input type="text" id="city-input-box" v-model="editOffice.city" required autofocus />
                         </div>
                         <div class="input-group">
                             <label>State</label>
-                            <input type="text" id="state-input-box" v-model="editOffice.zipCode" required autofocus />
+                            <input type="text" id="state-input-box" v-model="editOffice.state" required autofocus />
                         </div>
                         <div class="input-group">
                             <label>Zip Code</label>
-                            <input type="text" id="zip-code-input-box" v-model="editOffice.phoneNumber" required
+                            <input type="text" id="zip-code-input-box" v-model="editOffice.zipCode" required
                                 autofocus />
                         </div>
                     </div>
@@ -56,11 +61,11 @@
                     <div class="row">
                         <div class="input-group">
                             <label>Phone Number</label>
-                            <input type="text" id="phone-number-input-box" v-model="editOffice.email" required autofocus />
+                            <input type="text" id="phone-number-input-box" v-model="editOffice.phoneNumber" required autofocus />
                         </div>
                         <div class="input-group">
                             <label>Email Address</label>
-                            <input type="text" id="email-address-input-box" v-model="editOffice.officeHours" required
+                            <input type="text" id="email-address-input-box" v-model="editOffice.email" required
                                 autofocus />
                         </div>
                     </div>

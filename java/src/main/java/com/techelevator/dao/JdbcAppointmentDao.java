@@ -42,13 +42,22 @@ public class JdbcAppointmentDao implements AppointmentDao {
         return appointmentList;
     }
 
+
+    // this is for doctors to see appointments
     @Override
     public List<Appointment> getAppointmentListByDoctorId(int doctorId) {
 
         List<Appointment> appointmentList = new ArrayList<>();
 
-        String sql = "SELECT appointment_id, patient_id, doctor_id, appointment_date, " +
-                "appointment_time, duration, available, alert FROM appointment;";
+        String sql = "SELECT p.patient_id, p.first_name, p.last_name, p.phone_number, p.email, " +
+                        "p.address_line_1, p.address_line_2, p.city, p.state, p.zip_code, " +
+                        "a.appointment_id, a.doctor_id, a.appointment_date, a.appointment_time, " +
+                        "a.duration, a.available, a.alert " +
+                        "FROM patient AS p " +
+                        "INNER JOIN appointment AS a ON a.patient_id = p.patient_id " +
+                        "WHERE a.doctor_id = ? " +
+                        "ORDER BY a.appointment_date DESC;";
+
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
@@ -63,13 +72,25 @@ public class JdbcAppointmentDao implements AppointmentDao {
 
         return appointmentList;
     }
+
+    // this is for patients to see their appointments
     @Override
     public Appointment getAppointmentByPatientId(int patientId) {
 
         Appointment appointment = null;
 
-        String sql = "SELECT appointment_id, patient_id, doctor_id, appointment_date, " +
-                "appointment_time, duration, available, alert FROM appointment;";
+        String sql = "SELECT d.doctor_id, d.office_id, d.first_name, d.last_name, d.specialization, " +
+                        "d.cost_per_hour, a.appointment_id, a.patient_id, a.appointment_date, " +
+                        "a.appointment_time, a.duration, a.available, a.alert " +
+                        "FROM doctor AS d " +
+                        "INNER JOIN appointment AS a ON a.doctor_id = d.doctor_id " +
+                        "WHERE a.patient_id = ? " +
+                        "ORDER BY a.appointment_date DESC;";
+
+
+
+//                "SELECT appointment_id, patient_id, doctor_id, appointment_date, " +
+//                "appointment_time, duration, available, alert FROM appointment;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);

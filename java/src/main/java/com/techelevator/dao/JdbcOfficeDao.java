@@ -26,7 +26,7 @@ public class JdbcOfficeDao implements OfficeDao{
         List<Office> officeList = new ArrayList<>();
 
         String sql = "SELECT office_id, office_name, address_line_1, address_line_2, " +
-                "city, state, zip_code, phone_number, email, office_hours FROM office;";
+                "city, state, zip_code, phone_number, email, office_hours FROM office ORDER BY office_id;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
