@@ -7,7 +7,7 @@
 
                     <div class="row">
                         <div class="form-header">
-                            <h1>Patient Registration</h1>
+                            <h1>Update Office</h1>
                         </div>
                     </div>
 

@@ -7,16 +7,16 @@
       <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
 
-      <!-- <div v-if="$store.state.user.authorities[0].name === 'ROLE_USER'"> -->
+      <div v-if="$store.state.user.authorities[0].name === 'ROLE_USER'">
         <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }" v-if="$store.state.token != ''">My Appointments</router-link>
         <router-link class="nav-link" v-bind:to="{ name: 'schedule-appointment' }" v-if="$store.state.token != ''">Schedule Appointment</router-link>
-      <!-- </div>-->
+      </div>
 
-      <!-- <div v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
+      <div v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
         <router-link class="nav-link" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">My Schedule</router-link>
         <router-link class="nav-link" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Incoming Appointments</router-link>
         <router-link class="nav-link" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Reviews Management</router-link>
-      </div> -->
+      </div>
 
       <!-- FIX BUG: offices router link broken when not logged in-->
       <router-link class="nav-link" v-bind:to="{ name: 'offices' }">Offices</router-link>
