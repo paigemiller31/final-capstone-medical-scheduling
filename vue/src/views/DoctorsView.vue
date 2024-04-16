@@ -14,7 +14,7 @@
 
 
 
-                <!-- <ul id="update-button" v-if="$store.state.user.authorities[0].name === 'ROLE_USER'">
+                <!-- <ul id="update-button" v-if="$store.state.currentRole === 'ROLE_USER'">
                         ****** For patients to VIEW DOCTORS for OFFICES ******
                         <li v-for="office in officeList" v-bind:key="office.officeId">
                             <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/doctors' }">
@@ -30,7 +30,7 @@
 
 
                 <!--
-        <div v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
+        <div v-if="$store.state.currentRole === 'ROLE_DOCTOR'">
             <button v-for="office in officeList" v-bind:office="office" v-bind:key="office.officeId" v-on:click.prevent="$router.push('/office/:officeId/edit')">UPDATE</button>
         </div>
         -->

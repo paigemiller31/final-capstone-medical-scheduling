@@ -9,6 +9,7 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
       notification: null,
+      currentRole: '',
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -20,11 +21,15 @@ export function createStore(currentToken, currentUser) {
         state.user = user;
         localStorage.setItem('user', JSON.stringify(user));
       },
+      SET_CURRENT_ROLE(state, role) {
+        state.currentRole = role;
+      },
       LOGOUT(state) {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         state.token = '';
         state.user = {};
+        state.currentRole = '';
         axios.defaults.headers.common = {};
       },
       SET_NOTIFICATION (state, notification) {
