@@ -94,6 +94,14 @@ const routes = [
     }
   },
   {
+    path: "/doctors/:officeId",
+    name: "doctors",
+    component: DoctorsView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
     path: "/offices/:officeId/doctors",
     name: "doctors",
     component: DoctorsView,

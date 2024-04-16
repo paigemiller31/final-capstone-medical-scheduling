@@ -21,9 +21,8 @@
       <li
         class="doctor-list-item"
         v-for="doc in office.officeDoctors"
-        v-bind:key="doc.doctorId"
-      >
-        <router-link v-bind:to="{ path: '/doctor/' + doc.doctorId }">
+        v-bind:key="doc.officeId">
+        <router-link v-bind:to="{ name: 'doctors', params: {officeId:doc.officeId} }">
           <button class="btn-select-doc">
             {{ doc.firstName + " " + doc.lastName }}
           </button>
@@ -34,8 +33,6 @@
 </template>
     
 <script>
-// import OfficeCard from './OfficeCard.vue';
-// import OfficeService from '../services/OfficeService';
 
 export default {
   props: ["office"],

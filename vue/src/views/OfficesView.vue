@@ -5,21 +5,24 @@
       <div class="form-body">
         <h1 class="main-header">Offices</h1>
 
-        <!-- *NEW* OFFICE COMPONENT aka 'OFFICE CARD' -->
-        <office v-for="off in officeList" :key="off.officeId" :office="off" />
-
-        <ul
-          id="update-button"
-          v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'"
-        >
-          ****** For doctors to UPDATE OFFICES ******
-          <li v-for="office in officeList" v-bind:key="office.officeId">
-            <router-link
-              v-bind:to="{ path: '/offices/' + office.officeId + '/edit' }"
-            >
+        <div class="office-images-row">
+          <img src="src\assets\IMG_2679.JPG" alt="office">
+          <img src="src\assets\IMG_2679.JPG" alt="office">
+          <img src="src\assets\IMG_2679.JPG" alt="office">
+          <img src="src\assets\IMG_2679.JPG" alt="office">
+        </div>
+        <div class="office-row">
+          <!-- *NEW* OFFICE COMPONENT aka 'OFFICE CARD' -->
+          <office v-for="off in officeList" :key="off.officeId" :office="off" />
+        </div>
+        <ul id="update-button" v-if="$store.state.user.authorities[0].name === 'ROLE_DOCTOR'">
+          <div class="update-button-row">
+          <div v-for="office in officeList" v-bind:key="office.officeId">
+            <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/edit' }">
               <button v-bind:officeId="office.officeId">Update</button>
             </router-link>
-          </li>
+          </div>
+        </div>
         </ul>
       </div>
     </div>
@@ -85,5 +88,21 @@ body {
   margin-left: 30px;
   margin-right: 70px;
   width: 100vh;
+}
+
+.office-row {
+  display: flex;
+}
+
+.office-images-row {
+  display: flex;
+}
+
+img {
+  max-width: 210px;
+}
+
+.update-button-row {
+  display: flex;
 }
 </style>
