@@ -1,10 +1,10 @@
 <template>
     <div class="doctor-main">
-        <div class="doctors-info-row">
-            <span>{{ doctor.firstName + " " + doctor.lastName + " "}}</span>
-            <span>{{ doctor.specialization + " "}}</span>
-            <span>${{ doctor.costPerHour }}.00 per hour</span>
-        </div>
+        
+            <div>{{ doctor.firstName + " " + doctor.lastName + " "}}</div>
+            <div>{{ doctor.specialization + " "}}</div>
+            <div>${{ doctor.costPerHour }}.00 per hour</div>
+        
 
     </div>
 </template>
@@ -24,8 +24,5 @@ export default {
 
 <style scoped>
 
-.doctors-info-row {
-    display: flex;
-}
 
 </style>

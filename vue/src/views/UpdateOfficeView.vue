@@ -19,11 +19,7 @@
                                 autofocus />
                         </div>
 
-                        <div class="input-group">
-                            <label>Last Name</label>
-                            <input type="text" id="last-name-input-box" v-model="editOffice.addressLine1" required
-                                autofocus />
-                        </div>
+                       
                     </div>
 
                     <div class="row">
@@ -82,7 +78,7 @@
 
 <script>
 
-import OfficeService from '../services/OfficeService';
+import OfficeService from '../services/OfficeService.js';
 
 export default {
     data() {
@@ -220,19 +216,12 @@ input[type="text"] {
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 10px;
     padding-right: 10px;
-    color: #000000;
+    color: #4e4e4e;
     height: 15px;
     padding: 7px;
     border-style: none;
     border-radius: 3px;
     outline: none;
-}
-
-/* FIGURE OUT HOW TO MAKE THIS PLACEHOLDER TEXT STYLE */
-input::placeholder {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 7pt;
-  color: rgb(210, 210, 210);
 }
 
 #city-input-box,

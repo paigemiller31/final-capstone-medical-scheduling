@@ -2,9 +2,9 @@
     <body>
         <div class="home">
             <div class="form-body">
-
-                <doctor v-for="doctor in doctorList" v-bind:key="doctor.doctorId" v-bind:doctor="doctor" />
-
+                <div class="doctors-info-row">
+                    <doctor v-for="doctor in doctorList" v-bind:key="doctor.doctorId" v-bind:doctor="doctor" />
+                </div>
 
 
 
@@ -67,7 +67,7 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         //alert(response.data);
-                    this.doctorList = response.data;
+                        this.doctorList = response.data;
                     }
                 })
         },
@@ -85,6 +85,11 @@ export default {
 * {
     font-family: Arial, Helvetica, sans-serif;
     color: #000000;
+}
+
+.doctors-info-row {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 body {
