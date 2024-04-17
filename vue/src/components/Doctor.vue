@@ -7,6 +7,8 @@
 
         <div id="appt-selection">
             <input type="date" name="apptDay" id="apptDay" />
+
+
             <input type="time" name="apptTime" id="apptTime">
         </div>
         
@@ -65,6 +67,10 @@ export default {
                     }
                 })
         },
+
+        filterTimes() {
+
+        }
 
     },
     created() {
