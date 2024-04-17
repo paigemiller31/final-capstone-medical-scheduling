@@ -2,7 +2,7 @@
   <div id="capstone-app">
     <div id="nav" class="top-nav">
 
-      <!--<router-link class="nav-link" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''"> Welcome, {{$store.state.user.username}} !</router-link>-->
+      <router-link class="nav-link" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''"> Welcome, {{$store.state.user.username}}</router-link>
 
       <router-link class="nav-link" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''">Login</router-link>
       <router-link class="nav-link" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>

@@ -1,24 +1,24 @@
 <template>
     <div>
 
-      
 
 
-        <div >
+
+        <div>
             <br>
             <br><br>
-            <li v-for="appointment in appointmentList" v-bind:key="appointment.appointmentId" >  
-                'appointmentId', {{  appointment.appointmentId }} <br> 
-               'patientId' {{ appointment.patientId }}<br> 
-               'doctorId' {{  appointment.doctorId }}<br> 
-               'appointmentDate'  {{ appointment.appointmentDate }}<br> 
-               'appointmentTime'  {{ appointment.appointmentTime }}<br> 
-                'duration'{{ appointment.duration }}<br> 
-             'available'   {{ appointment.available }}<br> 
-              'alert'   {{ appointment.alert }}<br> 
+            <li v-for="appointment in appointmentList" v-bind:key="appointment.appointmentId">
+                'appointmentId', {{ appointment.appointmentId }} <br>
+                'patientId' {{ appointment.patientId }}<br>
+                'doctorId' {{ appointment.doctorId }}<br>
+                'appointmentDate' {{ appointment.appointmentDate }}<br>
+                'appointmentTime' {{ appointment.appointmentTime }}<br>
+                'duration'{{ appointment.duration }}<br>
+                'available' {{ appointment.available }}<br>
+                'alert' {{ appointment.alert }}<br>
             </li>
 
-        </div> 
+        </div>
 
         <!-- <div>
             <router-link v-bind:to="{name: 'home'}"><button>test button</button></router-link>
@@ -40,13 +40,13 @@
 <script>
 
 import AppointmentService from '../services/AppointmentService';
-import DoctorAppointments from '../components/DoctorAppointments.vue';
+//import DoctorAppointments from '../components/DoctorAppointments.vue';
 import PatientAppointments from '../components/PatientAppointments.vue';
 
 export default {
     components: {
         // DoctorAppointments,
-      //  PatientAppointments
+        //  PatientAppointments
     },
     data() {
         return {
@@ -58,23 +58,23 @@ export default {
 
         accessAppointments(patientId) {
             AppointmentService.getAppointmentsByPatientId(patientId)
-            .then(response => {
-                if (response.status === 200) {
-                    alert(  'this is success')
-                    this.appointmentList = response.data;
+                .then(response => {
+                    if (response.status === 200) {
+                        alert('this is success')
+                        this.appointmentList = response.data;
 
-                    alert(  this.appointmentList )
+                        alert(this.appointmentList)
 
 
-                }
-            })
+                    }
+                })
         },
         listAppointmentsForPatients(patientId) {
             AppointmentService.getAppointmentsByPatientId(patientId).then((response) => {
                 if (response.status === 200) {
-                   
 
-                   // this.appointmentList = response.data;
+
+                    // this.appointmentList = response.data;
                     //this.patientList = response.data; // this implementation applies to the above patient list situation - but doesn't appear to do what we want
                 }
             })
@@ -96,7 +96,7 @@ export default {
         // alert( this.$store.state.user.id , 'this is from Appointments by patientId ID:')
 
         // if (this.$store.state.currentRole === 'ROLE_USER') {
-            // this.listAppointmentsForPatients(this.$route.params.patientId);
+        // this.listAppointmentsForPatients(this.$route.params.patientId);
         // } else if (this.$store.state.currentRole === 'ROLE_DOCTOR') {
         //     this.listAppointmentsForDoctors(this.$route.params.doctorId);
         // }
@@ -105,10 +105,10 @@ export default {
 
 
 
-     // this.accessAppointments(this.$route.params.patientId);
-       this.accessAppointments(this.$store.state.user.id );
+        // this.accessAppointments(this.$route.params.patientId);
+        this.accessAppointments(this.$store.state.user.id);
     }
-    
+
     // this.listAppointmentsForDoctors(this.$route.params.doctorId);
 }
 

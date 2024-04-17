@@ -2,13 +2,16 @@
     <body>
         <div class="home">
             <div class="form-body">
+                <h1 class="main-header">Doctors</h1>
+                <div class="office-images-row">
+                    <img src="src\assets\IMG_2680 (1).JPG" alt="office">
+                    <img src="src/assets/Modern-Home-Office.jpg" alt="office">
+                </div>
                 <div class="doctors-info-row">
                     <doctor v-for="doctor in doctorList" v-bind:key="doctor.doctorId" v-bind:doctor="doctor" />
                 </div>
-                <!--calendar drop down right underneath name-->
-                <div class="bio-section">
-                    
-                </div>
+
+                
 
                 <!-- <ul id="update-button" v-if="$store.state.currentRole === 'ROLE_USER'">
                         ****** For patients to VIEW DOCTORS for OFFICES ******
@@ -80,9 +83,28 @@ export default {
     color: #000000;
 }
 
+.home {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        ". doctor ."
+    ;
+}
+.office-images-row {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+img {
+  max-width: 250px;
+  margin: 20px;
+  border: rgb(229, 229, 229) solid 1px;
+}
+
 .doctors-info-row {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 body {
@@ -90,24 +112,26 @@ body {
 }
 
 .main-header {
-    text-transform: uppercase;
-    text-justify: center;
-    text-align: center;
-    padding-top: 25px;
-    font-weight: 100;
-    font-size: 25pt;
+  text-transform: uppercase;
+  text-justify: center;
+  text-align: center;
+  padding-top: 25px;
+  font-weight: 100;
+  font-size: 26pt;
+  letter-spacing: .1rem;
 }
 
 .form-body {
+    grid-area: doctor;
+    justify-content: center;
     background-color: rgba(219, 219, 219, 0.5);
     margin-top: 75px;
     margin-bottom: 50px;
-    margin-left: 30px;
-    margin-right: 70px;
-    width: 100vh
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 100vh;
+    padding-left: 300px;
+    padding-right: 300px;
 }
 
-.bio-section {
-    display: flex;
-}
 </style>

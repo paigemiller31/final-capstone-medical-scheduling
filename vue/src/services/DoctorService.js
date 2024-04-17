@@ -6,4 +6,8 @@ export default {
         return axios.get(`/doctor/${officeId}`)
     },
 
+    createAnAppointment(appointment) {
+        return axios.post('/appointments', appointment)
+    }
+
 }

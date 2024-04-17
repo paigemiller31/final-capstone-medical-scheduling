@@ -38,7 +38,7 @@
       {{ doc.firstName + " " + doc.lastName }}
       <div class="doctor-info">
       <div>{{ doc.specialization + " " }}</div>
-      <div>${{ doc.costPerHour }}.00 per hour</div>
+      <div>${{ doc.costPerHour }}.00 Copay</div>
     </div>
       <br>
     </div>
