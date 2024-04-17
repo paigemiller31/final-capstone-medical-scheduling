@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Appointment {
 
@@ -15,6 +17,9 @@ public class Appointment {
     private int duration;
     private boolean available;
     private boolean alert;
+    private List<Patient> officePatients = new ArrayList<>();
+
+
 
     public Appointment(){
 
@@ -97,4 +102,14 @@ public class Appointment {
     public void setAlert(boolean alert) {
         this.alert = alert;
     }
+
+
+    public List<Patient> getOfficePatients() {
+        return officePatients;
+    }
+
+    public void setOfficePatients(List<Patient> officePatients) {
+        this.officePatients = officePatients;
+    }
+
 }
