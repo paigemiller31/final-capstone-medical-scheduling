@@ -29,6 +29,7 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
         this.duration = duration;
+        this.available = available;
         this.alert = alert;
 
     }
@@ -96,5 +97,4 @@ public class Appointment {
     public void setAlert(boolean alert) {
         this.alert = alert;
     }
-
 }

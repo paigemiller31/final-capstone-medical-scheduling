@@ -50,6 +50,18 @@ public class AppointmentController {
         return result;
     }
 
+
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/appointments", method = RequestMethod.POST)
+    public void createAppointmentController(@RequestBody Appointment newAppointment) {
+        try {
+             appointmentDao.createAppointment(newAppointment);
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR );
+        }
+    }
+
 //    public Appointment scheduleAppointmentByPatientId(Appointment patientId, int id) {
 ////        patientId.setPatientId(id);
 //        try {

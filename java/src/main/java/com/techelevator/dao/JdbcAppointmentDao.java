@@ -99,6 +99,42 @@ public class JdbcAppointmentDao implements AppointmentDao {
         return appointments;
     }
 
+    @Override
+    public void createAppointment(Appointment appointment){
+        String sql =
+                " INSERT INTO appointment ( patient_id, doctor_id, appointment_date, appointment_time, duration, available, alert ) " +
+                        " VALUES (  ?, ?, ?, ?, ?, 'f', 't' )  RETURNING appointment_id ; " ;
+
+        try {
+
+            int newPatientId =   jdbcTemplate.queryForObject( sql ,
+                    int.class,
+                    appointment.getPatientId(),
+                    appointment.getDoctorId(),
+                    appointment.getAppointmentDate(),
+                    appointment.getAppointmentTime() ,
+                    appointment.getDuration()
+
+            );
+
+            // patient.setPatientId(patientId); // Set the generated patientId to the newPatient object
+
+
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+
+
+    }
+
+
+
+
+
+
+
 //    @Override
 //    public Appointment getAppointmentByDoctorId(int doctorId) {
 //
