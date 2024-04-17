@@ -3,6 +3,7 @@ import com.techelevator.dao.AppointmentDao;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Patient;
+import com.techelevator.model.ScheduleBlock;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -74,5 +75,18 @@ public class AppointmentController {
 
     //TODO: Get patientAppointments by patientId, date
     //TODO: Get doctorAppointments by doctorId, Date
+
+    @RequestMapping(path = "/appointments/{date}", method = RequestMethod.GET)
+    public List<ScheduleBlock> getAppointmentAvailabilityDate(@PathVariable String date){
+
+
+        try {
+            return appointmentDao.getAppointmentsForDate(date);
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR );
+        }
+
+
+    }
 
 }
