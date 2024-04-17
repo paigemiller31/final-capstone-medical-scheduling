@@ -33,7 +33,7 @@ public class AppointmentService {
 
         for(Appointment o : appointmentReturn){
 
-            //  o.setOfficePatients( patientDao.getPatientByUserId(o.getPatientId() ) );
+            o.setOfficePatients((List<Patient>) patientDao.getPatientByUserId(o.getPatientId() ));
 
         }
 
