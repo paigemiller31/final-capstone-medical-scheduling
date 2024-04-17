@@ -25,12 +25,12 @@ public class AppointmentController {
     }
 
     // this is for patients to see their appointments
-    @RequestMapping(path = "/appointments/{patientId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/patient-appointments/{patientId}", method = RequestMethod.GET)
     public List<Appointment> getAppointmentByPatientIdController(@PathVariable int patientId) {
         List<Appointment> result = new ArrayList<>();
         Patient patient;
         try {
-            result = appointmentDao.getAppointmentListByPatientId(patientId);
+            result = appointmentDao.getAppointmentByPatientId(patientId);
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,8 +38,8 @@ public class AppointmentController {
     }
 
     // this is for doctors to see their appointments
-    @RequestMapping(path = "/appointments/{doctorId}", method = RequestMethod.GET)
-    public List<Appointment> getAppointmentByDoctorIdController(@PathVariable int doctorId) {
+    @RequestMapping(path = "/doctor-appointments/{doctorId}", method = RequestMethod.GET)
+    public List<Appointment> getAppointmentListByDoctorId(@PathVariable int doctorId) {
         List<Appointment> result = new ArrayList<>();
         Doctor doctor;
         try {
@@ -50,18 +50,17 @@ public class AppointmentController {
         return result;
     }
 
-    public Appointment scheduleAppointmentByPatientId(Appointment patientId, int id) {
-//        patientId.setPatientId(id);
-        try {
-            return appointmentDao.scheduleAppointmentByPatientId(patientId);
-        } catch (Exception ex) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    public Appointment scheduleAppointmentByPatientId(Appointment patientId, int id) {
+////        patientId.setPatientId(id);
+//        try {
+//            return appointmentDao.scheduleAppointmentByPatientId(patientId);
+//        } catch (Exception ex) {
+//            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
-    //TODO: Get patientAppointments by patientId
+
     //TODO: Get patientAppointments by patientId, date
-    //TODO: Get doctorAppointments by doctorId
     //TODO: Get doctorAppointments by doctorId, Date
 
 }

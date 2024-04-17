@@ -2,14 +2,16 @@ package com.techelevator.model;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Appointment {
 
     private int appointmentId;
     private int patientId;
     private int doctorId;
-    private int appointmentDate;
-    private int appointmentTime;
+    private LocalDate appointmentDate;
+    private LocalTime appointmentTime;
     private int duration;
     private boolean available;
     private boolean alert;
@@ -18,8 +20,8 @@ public class Appointment {
 
     }
 
-    public Appointment(int appointmentId, int patientId, int doctorId, int appointmentDate,
-                       int appointmentTime, int duration, boolean available, boolean alert ) {
+    public Appointment(int appointmentId, int patientId, int doctorId, LocalDate appointmentDate,
+                       LocalTime appointmentTime, int duration, boolean available, boolean alert ) {
 
         this.appointmentId = appointmentId;
         this.patientId = patientId;
@@ -55,19 +57,19 @@ public class Appointment {
         this.doctorId = doctorId;
     }
 
-    public int getAppointmentDate() {
+    public LocalDate getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(int appointmentDate) {
+    public void setAppointmentDate(LocalDate appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 
-    public int getAppointmentTime() {
+    public LocalTime getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(int appointmentTime) {
+    public void setAppointmentTime(LocalTime appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 
