@@ -41,4 +41,19 @@ public class PatientController {
     }
 
 
+    @RequestMapping(path = "/patient/id/{patientId}", method = RequestMethod.GET)
+
+
+    public Patient getPatientByUserIdController(@PathVariable  int patientId){
+
+
+        Patient patient = patientDao.getPatientByUserId( patientId);
+        if (patient == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found.");
+        } else {
+            return patient;
+        }
+    }
+
+
 }

@@ -52,6 +52,17 @@ public class DoctorController {
         return result;
     }
 
+    @RequestMapping(path = "/doctor/id/{doctorId}", method = RequestMethod.GET)
+    public Doctor getDoctorsByDoctorIdController(@PathVariable int doctorId) {
+        Doctor  result = new Doctor();
+        try {
+            result = doctorDao.getDoctorsByDoctorId ( doctorId );
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return result;
+    }
+
 
 
     /** New Endpoint Stubs **/

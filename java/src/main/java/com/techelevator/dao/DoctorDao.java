@@ -10,4 +10,6 @@ public interface DoctorDao {
     void createDoctor(Doctor doctor);
     List<Doctor> getDoctorsByOfficeId(int officeId);
 
+    Doctor getDoctorsByDoctorId(int doctorId);
+
 }

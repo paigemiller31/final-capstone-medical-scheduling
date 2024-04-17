@@ -4,7 +4,7 @@ import com.techelevator.model.Patient;
 
 public interface PatientDao {
     void createPatient(Patient patient);
-    Patient getPatientByUserId(int userId);
+    Patient getPatientByUserId(int patientId);
 
     // update Account
 

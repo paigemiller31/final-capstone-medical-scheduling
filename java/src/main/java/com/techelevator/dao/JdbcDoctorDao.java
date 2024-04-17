@@ -73,6 +73,27 @@ public class JdbcDoctorDao implements DoctorDao {
     }
 
 
+    @Override
+    public Doctor getDoctorsByDoctorId(int doctorId){
+
+        Doctor doctor = new Doctor();
+        String sql =  "  SELECT office_id, doctor_id, first_name, last_name, specialization, cost_per_hour " +
+                " FROM public.doctor where doctor_id = ? ;" ;
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+
+        try {
+            if (results.next()) {
+                 doctor = mapRowToDoctor(results);
+
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+
+        return doctor;
+    }
+
     private Doctor mapRowToDoctor(SqlRowSet rs) {
         Doctor doctor = new Doctor();
         doctor.setDoctorId(  rs.getInt("doctor_id"));
