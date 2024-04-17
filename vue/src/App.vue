@@ -10,16 +10,15 @@
 
     <div  v-if="$store.state.token != ''">
 
-      <div v-if="$store.state.currentRole === 'ROLE_USER'">
+      <!-- <div v-if="$store.state.currentRole === 'ROLE_USER'"> -->
         <router-link class="nav-link" v-bind:to="{ name: 'my-appointment' }">My Appointments</router-link>
-        <router-link class="nav-link" v-bind:to="{ name: 'schedule-appointment' }">Schedule Appointment</router-link>
-      </div>
 
-      <div v-if="$store.state.currentRole === 'ROLE_DOCTOR'">
-        <router-link class="nav-link" v-bind:to="{ name: 'home' }">My Schedule</router-link>
-        <router-link class="nav-link" v-bind:to="{ name: 'home' }">Incoming Appointments</router-link>
-        <router-link class="nav-link" v-bind:to="{ name: 'home' }">Reviews Management</router-link>
-      </div>
+      <!-- </div> -->
+
+      <!-- <div v-if="$store.state.currentRole === 'ROLE_DOCTOR'"> -->
+        <!-- <router-link class="nav-link" v-bind:to="{ name: 'home' }">Incoming Appointments</router-link>
+        <router-link class="nav-link" v-bind:to="{ name: 'home' }">Reviews Management</router-link> -->
+      <!-- </div> -->
 
     </div>
 

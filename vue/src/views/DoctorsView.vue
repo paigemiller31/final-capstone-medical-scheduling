@@ -9,10 +9,6 @@
                 <div class="bio-section">
                     
                 </div>
-                
-
-
-
 
                 <!-- <ul id="update-button" v-if="$store.state.currentRole === 'ROLE_USER'">
                         ****** For patients to VIEW DOCTORS for OFFICES ******
@@ -23,18 +19,11 @@
                         </li>
                      -->
 
-
-
-
-
-
-
                 <!--
         <div v-if="$store.state.currentRole === 'ROLE_DOCTOR'">
             <button v-for="office in officeList" v-bind:office="office" v-bind:key="office.officeId" v-on:click.prevent="$router.push('/office/:officeId/edit')">UPDATE</button>
         </div>
         -->
-
 
             </div>
         </div>
@@ -56,6 +45,7 @@ export default {
         };
     },
     methods: {
+        // Pretty sure we're not using this, but just leave it for now
         listDoctors(office) {
             //alert(office.officeId);
             OfficeService.getDoctorsDeep(office.officeId).then((response) => {

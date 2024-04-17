@@ -19,7 +19,6 @@ export default {
     },
 
     getReviewsByOfficeId(officeId) {
-       
         return axios.get(`/reviews/${officeId}`)
     },
 
