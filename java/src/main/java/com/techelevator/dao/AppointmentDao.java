@@ -16,7 +16,7 @@ public interface AppointmentDao {
 
     void createAppointment(Appointment appointment);
 
-    List<ScheduleBlock> getAppointmentsForDate(String apptDate);
+    List<ScheduleBlock> getAppointmentsForDate(String apptDate ,int doctorId);
 
 
 //    List<Appointment> getAppointmentListByPatientId(int patientId);

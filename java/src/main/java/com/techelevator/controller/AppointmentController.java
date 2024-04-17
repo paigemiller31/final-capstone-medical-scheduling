@@ -76,12 +76,12 @@ public class AppointmentController {
     //TODO: Get patientAppointments by patientId, date
     //TODO: Get doctorAppointments by doctorId, Date
 
-    @RequestMapping(path = "/appointments/{date}", method = RequestMethod.GET)
-    public List<ScheduleBlock> getAppointmentAvailabilityDate(@PathVariable String date){
+    @RequestMapping(path = "/appointments/{date}/{doctorId}", method = RequestMethod.GET)
+    public List<ScheduleBlock> getAppointmentAvailabilityDate(@PathVariable String date , @PathVariable  int doctorId){
 
 
         try {
-            return appointmentDao.getAppointmentsForDate(date);
+            return appointmentDao.getAppointmentsForDate(date, doctorId);
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR );
         }

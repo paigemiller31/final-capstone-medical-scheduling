@@ -135,7 +135,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
     }
 
     @Override
-    public List<ScheduleBlock> getAppointmentsForDate(String apptDate){
+    public List<ScheduleBlock> getAppointmentsForDate(String apptDate,int doctorId){
 
         List<ScheduleBlock> sbList = new ArrayList<>();
 
@@ -170,7 +170,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
                             "\t\t\t\t\t\t )\n" +
                             "\t\t\t\t\t )\n" +
                             "WHERE\n" +
-                            "doh.doctor_id = 3\n" +
+                            "doh.doctor_id = ?\n" +
                             "\n" +
                             "ORDER BY\n" +
                             "    doh.office_id,\n" +
@@ -178,7 +178,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
                             "    doh.time_block;";
 
             try{
-                SqlRowSet results =  jdbcTemplate.queryForRowSet( apptDateSQL, dateValue, dateValue);
+                SqlRowSet results =  jdbcTemplate.queryForRowSet( apptDateSQL, dateValue, dateValue, doctorId);
 
                 while(results.next()){
 
