@@ -25,7 +25,7 @@
       <!-- FIX BUG: offices router link broken when not logged in-->
       <router-link class="nav-link" v-bind:to="{ name: 'offices' }">Offices</router-link>
 
-      <router-link class="home-button" v-bind:to="{ name: 'home' }"><img src="..\..\src\assets\home-button.jpg"></router-link>
+      <router-link class="home-button" v-bind:to="{ name: 'home' }"><img src="..\..\src\assets\home-button-removebg-preview.png"></router-link>
 
     </div>
     <router-view />
@@ -38,7 +38,7 @@
 </script>
 
 
-<style>
+<!-- <style>
 body {
   background-image: url("/src/assets/background.jpg");
   background-attachment: fixed;
@@ -71,6 +71,48 @@ body {
 .top-nav>.nav-link:hover {
   background-color: #FFFFFF;
   color: #000000;
+}
+
+.top-nav>.nav-link.active {
+  color: #000000;
+}
+</style> -->
+
+<style>
+body {
+  background-image: url("/src/assets/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.top-nav {
+  /* overflow: hidden; */
+  position: sticky;
+  top: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 0px;
+  height: 70px;
+}
+
+.home-button {
+  margin-left: 40px;
+}
+
+.top-nav .nav-link {
+  float: right;
+  color: #999999;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 22px;
+  margin-right: 45px;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 13pt;
+  text-transform: uppercase;
+}
+
+.top-nav>.nav-link:hover {
+  color: #d7d7d7;
 }
 
 .top-nav>.nav-link.active {

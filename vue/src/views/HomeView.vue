@@ -47,7 +47,7 @@ export default {
 }; 
 </script>
 
-<style scoped>
+<!-- <style scoped>
 * {
   font-family: Arial, Helvetica, sans-serif;
   color: #000000;
@@ -137,4 +137,100 @@ li {
   font-size: 11.5pt;
   font-style: italic;
   padding-top: 7px;
+}</style> -->
+
+<style scoped>
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+
+body {
+  overflow: hidden;
+}
+
+.main-header {
+  grid-area: header;
+  text-transform: uppercase;
+  text-justify: center;
+  text-align: center;
+  padding-top: 25px;
+  font-weight: 100;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 25pt;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.info {
+  font-size: 14px;
+}
+
+.form-body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'header header'
+    'logo info';
+    background-color: rgba(116, 114, 114, 0.5);
+  border-radius: 1%;
+  margin-top: 75px;
+  margin-bottom: 50px;
+  margin-left: 80px;
+  margin-right: 60px;
+  height: 100vh;
+  width: 200vh;
+}
+
+#logo {
+  grid-area: logo;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+
+}
+
+#info {
+  grid-area: info;
+  padding-top: 60px;
+  padding-right: 65px;
+}
+
+#footer {
+  grid-area: footer;
+}
+
+img {
+  max-height: 60%;
+  border-radius: 5px;
+}
+
+li {
+  margin-bottom: 5px;
+  list-style: none;
+}
+
+.header-2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13pt;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.description {
+  font-size: 10pt;
+}
+
+.foot-text {
+  margin-top: 13px;
+  font-size: 11.5pt;
+  font-style: italic;
+  padding-top: 160px;
 }</style>
