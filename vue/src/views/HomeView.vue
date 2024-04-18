@@ -47,7 +47,7 @@ export default {
 }; 
 </script>
 
-<!-- <style scoped>
+<style scoped>
 * {
   font-family: Arial, Helvetica, sans-serif;
   color: #000000;
@@ -137,7 +137,11 @@ li {
   font-size: 11.5pt;
   font-style: italic;
   padding-top: 7px;
-}</style> -->
+}
+</style>
+
+
+<!-- JASMINE :)
 
 <style scoped>
 * {
@@ -234,3 +238,5 @@ li {
   font-style: italic;
   padding-top: 160px;
 }</style>
+
+-->

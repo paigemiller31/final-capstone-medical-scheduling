@@ -7,11 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import PatientRegistrationView from '../views/PatientRegistrationView.vue';
-import DoctorRegistrationView from '../views/DoctorRegistrationView.vue';
 import OfficesView from '../views/OfficesView.vue';
-
-
-import ScheduleAppointmentView from '../views/ScheduleAppointmentView.vue';
 import MyAppointmentsView from '../views/MyAppointmentsView.vue';
 import UpdateOfficeView from '../views/UpdateOfficeView.vue';
 import DoctorsView from '../views/DoctorsView.vue';
@@ -71,14 +67,6 @@ const routes = [
     }
   },
   {
-    path: "/doctorRegistration",
-    name: "doctor-registration",
-    component: DoctorRegistrationView,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
     path: "/offices",
     name: "offices",
     component: OfficesView,
@@ -86,7 +74,6 @@ const routes = [
       requiresAuth: false
     }
   },
-
   {
     path: "/offices/:officeId/edit",
     name: "update-office",
@@ -126,14 +113,6 @@ const routes = [
     component: DoctorsView,
     meta: {
       requiresAuth: false
-    }
-  },
-  {
-    path: "/scheduleAppointment",
-    name: "schedule-appointment",
-    component: ScheduleAppointmentView,
-    meta: {
-      requiresAuth: true
     }
   },
   {

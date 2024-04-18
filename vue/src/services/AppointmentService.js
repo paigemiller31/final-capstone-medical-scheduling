@@ -19,7 +19,6 @@ export default {
       return axios.get(`/patient/id/${patientId}`)
   },
 
-
   // this is for doctors to see appointments
   getAppointmentsByDoctorId(doctorId) {
       return axios.get(`/doctor-appointments/${doctorId}`)
@@ -40,6 +39,5 @@ export default {
       return axios.get(`scheduleAppointments/${patientId}`)
   },
   */
-
 
 }

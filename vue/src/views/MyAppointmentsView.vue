@@ -84,7 +84,6 @@ export default {
     switch (this.$store.state.user.authorities[0].name) {
       case "ROLE_USER":
         this.listAppointmentsForPatients(this.$store.state.user.id);
-        this.accessPatientDetails(this.$store.state.user.id);
         break;
       case "ROLE_DOCTOR":
         this.listAppointmentsForDoctors(this.$store.state.user.id);

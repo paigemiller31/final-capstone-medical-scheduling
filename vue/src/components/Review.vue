@@ -38,7 +38,6 @@ export default {
 
 <style scoped>
 
-
 .router-link {
 
   justify-self: flex-end;
@@ -52,4 +51,5 @@ export default {
   background-color: rgb(250, 249, 249);
   letter-spacing: .05rem
 }
+
 </style>

@@ -38,7 +38,7 @@
 </script>
 
 
-<!-- <style>
+<style>
 body {
   background-image: url("/src/assets/background.jpg");
   background-attachment: fixed;
@@ -76,9 +76,16 @@ body {
 .top-nav>.nav-link.active {
   color: #000000;
 }
-</style> -->
+</style>
 
-<style>
+
+
+
+
+
+<!-- JASMINE :)
+
+<style scoped>
 body {
   background-image: url("/src/assets/background.jpg");
   background-attachment: fixed;
@@ -89,7 +96,7 @@ body {
   /* overflow: hidden; */
   position: sticky;
   top: 0px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   margin-top: 0px;
   height: 70px;
 }
@@ -119,3 +126,5 @@ body {
   color: #000000;
 }
 </style>
+
+-->

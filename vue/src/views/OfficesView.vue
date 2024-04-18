@@ -59,8 +59,7 @@ export default {
 };
 </script>
 
-
-<!-- <style scoped>
+<style scoped>
 * {
   font-family: Arial, Helvetica, sans-serif;
   color: #000000;
@@ -144,10 +143,11 @@ button:hover {
   cursor: pointer;
 }
 
+</style>
 
 
+<!-- JASMINE :)
 
-</style> -->
 <style scoped>
 * {
   font-family: Arial, Helvetica, sans-serif;
@@ -236,7 +236,6 @@ button:hover {
   cursor: pointer;
 }
 
-
-
-
 </style>
+
+ -->
