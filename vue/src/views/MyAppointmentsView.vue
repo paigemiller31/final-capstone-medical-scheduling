@@ -1,5 +1,10 @@
 <template>
   <div>
+
+    {{ patient.firstName }}
+    {{ patient.lastName }}
+
+    
     <div>
       <appointment
         v-for="appointment in appointmentList"
@@ -12,7 +17,7 @@
 
 <script>
 import AppointmentService from "../services/AppointmentService";
-import DoctorAppointments from "../components/DoctorAppointments.vue";
+//import DoctorAppointments from "../components/DoctorAppointments.vue";
 import Appointment from "../components/Appointment.vue";
 
 export default {
@@ -29,7 +34,7 @@ export default {
   },
   methods: {
     accessPatientDetails(patientId) {
-      // alert(  'accessPatientDetails is success')
+      
       AppointmentService.getPatientDetailsByPatientId(patientId).then(
         (response) => {
           if (response.status === 200) {
@@ -79,6 +84,7 @@ export default {
     switch (this.$store.state.user.authorities[0].name) {
       case "ROLE_USER":
         this.listAppointmentsForPatients(this.$store.state.user.id);
+        this.accessPatientDetails(this.$store.state.user.id);
         break;
       case "ROLE_DOCTOR":
         this.listAppointmentsForDoctors(this.$store.state.user.id);
