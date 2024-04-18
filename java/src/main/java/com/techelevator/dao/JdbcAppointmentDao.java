@@ -61,7 +61,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
                         "FROM patient AS p " +
                         "INNER JOIN appointment AS a ON a.patient_id = p.patient_id " +
                         "WHERE a.doctor_id = ? " +
-                        "ORDER BY a.appointment_date DESC;";
+                        "ORDER BY a.appointment_date, a.appointment_time;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
@@ -82,12 +82,12 @@ public class JdbcAppointmentDao implements AppointmentDao {
         List<Appointment> appointments = new ArrayList<>();
 
         String sql = "SELECT d.doctor_id, d.office_id, d.first_name, d.last_name, d.specialization, " +
-                        "d.cost_per_hour, a.appointment_id, a.patient_id, a.appointment_date, " +
+                        "a.appointment_id, a.patient_id, a.appointment_date, " +
                         "a.appointment_time, a.duration, a.available, a.alert " +
                         "FROM doctor AS d " +
                         "INNER JOIN appointment AS a ON a.doctor_id = d.doctor_id " +
                         "WHERE a.patient_id = ? " +
-                        "ORDER BY a.appointment_date DESC;";
+                        "ORDER BY a.appointment_date, a.appointment_time;";
 
 //                "SELECT appointment_id, patient_id, doctor_id, appointment_date, " +
 //                "appointment_time, duration, available, alert FROM appointment;";
@@ -247,6 +247,11 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setDuration(rs.getInt("duration"));
         appointment.setAvailable(rs.getBoolean("available"));
         appointment.setAlert(rs.getBoolean("alert"));
+
+        appointment.setFirstName(rs.getString("first_name"));
+        appointment.setLastName(rs.getString("last_name"));
+
+
         return appointment;
     }
 

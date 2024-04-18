@@ -17,6 +17,11 @@ public class Appointment {
     private int         duration;
     private boolean     available;
     private boolean     alert;
+
+    private String firstName;
+    private String lastName;
+    private String specialization;
+
     //private List<Patient> officePatients = new ArrayList<>();
 
 
@@ -25,9 +30,8 @@ public class Appointment {
 
     }
 
-    public Appointment(int appointmentId, int patientId, int doctorId, LocalDate appointmentDate,
-                       LocalTime appointmentTime, int duration, boolean available, boolean alert ) {
-
+    public Appointment(int appointmentId, int patientId, int doctorId, LocalDate appointmentDate, LocalTime appointmentTime,
+                       int duration, boolean available, boolean alert, String firstName, String lastName, String specialization) {
         this.appointmentId = appointmentId;
         this.patientId = patientId;
         this.doctorId = doctorId;
@@ -36,7 +40,9 @@ public class Appointment {
         this.duration = duration;
         this.available = available;
         this.alert = alert;
-
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.specialization = specialization;
     }
 
     public int getAppointmentId() {
@@ -103,7 +109,27 @@ public class Appointment {
         this.alert = alert;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
 }

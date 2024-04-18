@@ -1,7 +1,12 @@
 <template>
     <div class="appointment-main">
 
-        <div>{{ appointment.appointmentDate }}</div>
+                <span class="appt-detail">{{appointment.appointmentDate}}</span>
+                <span class="appt-detail">{{appointment.appointmentTime}}</span>
+                <span class="appt-detail">{{appointment.firstName}}</span>
+                <span class="appt-detail">{{appointment.lastName}}</span>
+                <span class="appt-detail">{{appointment.specialization}}</span>
+
         <!-- <div>{{ appointment.patientId }}</div> -->
         
     
@@ -20,4 +25,10 @@
     
     <style scoped>
     
+    .appt-detail {
+        display: inline-block;
+        margin: 10px 10px;
+        min-width: 60px;
+    }
+
     </style>

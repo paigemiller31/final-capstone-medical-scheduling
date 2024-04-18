@@ -1,9 +1,5 @@
 <template>
   <div>
-
-    {{ patient.firstName }}
-    {{ patient.lastName }}
-
     
     <div>
       <appointment
