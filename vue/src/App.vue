@@ -25,7 +25,7 @@
       <!-- FIX BUG: offices router link broken when not logged in-->
       <router-link class="nav-link" v-bind:to="{ name: 'offices' }">Offices</router-link>
 
-      <router-link class="home-button" v-bind:to="{ name: 'home' }"><img src="src\assets\home-button.jpg"></router-link>
+      <router-link class="home-button" v-bind:to="{ name: 'home' }"><img src="..\..\src\assets\home-button.jpg"></router-link>
 
     </div>
     <router-view />

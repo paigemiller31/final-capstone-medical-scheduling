@@ -31,12 +31,6 @@ public class AppointmentService {
         List<Appointment> appointmentReturn = appointmentDao.getAppointmentByPatientId(p.getPatientId());
 
 
-        for(Appointment o : appointmentReturn){
-
-            o.setOfficePatients((List<Patient>) patientDao.getPatientByUserId(o.getPatientId() ));
-
-        }
-
         return appointmentReturn;
 
     }

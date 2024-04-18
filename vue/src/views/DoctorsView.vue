@@ -4,8 +4,8 @@
             <div class="form-body">
                 <h1 class="main-header">Doctors</h1>
                 <div class="office-images-row">
-                    <img src="src\assets\IMG_2680 (1).JPG" alt="office">
-                    <img src="src/assets/Modern-Home-Office.jpg" alt="office">
+                    <img src="..\..\src\assets\IMG_2680.JPG" alt="office">
+                    <img src="..\..\src\assets\Modern-Home-Office.jpg" alt="office">
                 </div>
                 <div class="doctors-info-row">
                     <doctor v-for="doctor in doctorList" v-bind:key="doctor.doctorId" v-bind:doctor="doctor" />

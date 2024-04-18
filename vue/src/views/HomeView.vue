@@ -6,7 +6,7 @@
         <h1 class="main-header">Medical Scheduling Company</h1>
 
         <div id="logo">
-          <img src="src\assets\home.JPG">
+          <img src="..\..\src\assets\home.JPG">
         </div>
 
         <article id="info">

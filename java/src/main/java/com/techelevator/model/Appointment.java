@@ -9,15 +9,15 @@ import java.util.List;
 
 public class Appointment {
 
-    private int appointmentId;
-    private int patientId;
-    private int doctorId;
-    private LocalDate appointmentDate;
-    private LocalTime appointmentTime;
-    private int duration;
-    private boolean available;
-    private boolean alert;
-    private List<Patient> officePatients = new ArrayList<>();
+    private int         appointmentId;
+    private int         patientId;
+    private int         doctorId;
+    private LocalDate   appointmentDate;
+    private LocalTime   appointmentTime;
+    private int         duration;
+    private boolean     available;
+    private boolean     alert;
+    //private List<Patient> officePatients = new ArrayList<>();
 
 
 
@@ -104,12 +104,6 @@ public class Appointment {
     }
 
 
-    public List<Patient> getOfficePatients() {
-        return officePatients;
-    }
 
-    public void setOfficePatients(List<Patient> officePatients) {
-        this.officePatients = officePatients;
-    }
 
 }

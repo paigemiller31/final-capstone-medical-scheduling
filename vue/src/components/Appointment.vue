@@ -1,7 +1,7 @@
 <template>
-    <div class="patient-appointment-main">
+    <div class="appointment-main">
 
-        <div>{{ appointment.appointment }}</div>
+        <div>{{ appointment.appointmentDate }}</div>
         <!-- <div>{{ appointment.patientId }}</div> -->
         
     

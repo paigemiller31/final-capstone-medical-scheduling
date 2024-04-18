@@ -2,6 +2,12 @@ import axios from 'axios';
 
 export default {
 
+  postNewAppointment(appointment){
+
+    return axios.post("/appointments", appointment);
+
+  },
+
   // this is for patients to see their appointments
   getAppointmentsByPatientId(patientId) {
     //  alert(patientId)
@@ -21,6 +27,12 @@ export default {
 
   getDoctorDetailsByDoctorId(doctorId) {
       return axios.get(`/doctor/id/${doctorId}`)
+  },
+
+  getAvailableAppointmentsByDoctorAndDate(doctorId, date){
+
+    return axios.get(`/appointments/${date}/${doctorId}`);
+
   },
 
   /* not using this yet, so commenting it out for now to focus on ^
