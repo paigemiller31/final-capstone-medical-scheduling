@@ -85,7 +85,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
   list-style-type: none;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   letter-spacing: .5pt;
 }
 
