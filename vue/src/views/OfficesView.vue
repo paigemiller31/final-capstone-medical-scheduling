@@ -17,7 +17,7 @@
           <office v-for="off in officeList" :key="off.officeId" :office="off" />
         </div>
         
-        <ul id="update-button" v-if="$store.state.currentRole === 'ROLE_DOCTOR'">
+        <ul id="update-button" v-if="$store.state.currentRole === 'ROLE_ADMIN'">
           <div class="update-button-row">
           <div v-for="office in officeList" v-bind:key="office.officeId">
             <router-link v-bind:to="{ path: '/offices/' + office.officeId + '/edit' }">
@@ -87,8 +87,7 @@ body {
   text-align: center;
   padding-top: 25px;
   font-weight: 100;
-  font-size: 26pt;
-  letter-spacing: .15rem;
+  font-size: 25pt;
 }
 
 .form-body {

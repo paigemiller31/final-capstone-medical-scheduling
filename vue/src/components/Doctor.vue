@@ -122,7 +122,6 @@ export default {
       this.addAppointment.doctorId = this.$route.params.doctorId;
     },
 
-    // is this correct? hmmm...... doctorId? appointmentId?
     submitForm() {
       this.addAppointment.doctorId = this.$route.params.doctorId;
       DoctorService.createAnAppointment(this.addAppointment).then(
@@ -150,7 +149,7 @@ export default {
 }
 
 .selected {
-    color: green;
+    color: gray;
 }
 
 .doctor-main {
@@ -164,15 +163,19 @@ export default {
   border: 1.5px solid rgb(196, 196, 196);
   padding: 20px;
   height: auto;
-  min-width: 250px;
+  width: 400px;
 }
 
 .doctor-name {
   font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  letter-spacing: .01rem;
 }
 
 .doctor-specialization {
   font-size: 17px;
+  margin-bottom: 2px;
 }
 
 .doctor-cost {
@@ -188,7 +191,8 @@ input {
   border: solid 1px rgb(190, 189, 189);
   border-radius: 4px;
   letter-spacing: 0.05rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .router-link {
@@ -203,6 +207,4 @@ input {
   letter-spacing: 0.05rem;
 }
 
-#submit-button {
-}
 </style>

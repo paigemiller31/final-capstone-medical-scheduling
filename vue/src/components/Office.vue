@@ -18,14 +18,14 @@
 
       <div class="appointment-button">
       
-      <router-link class= "router-link" v-bind:to="{ name: 'reviews', params: { officeId: office.officeId } }">
+      <router-link class= "router-link" id="see-reviews-button" v-bind:to="{ name: 'reviews', params: { officeId: office.officeId } }">
        See Reviews
     </router-link>
     </div>
     <br />
     <div class="appointment-button">
     
-    <router-link class= "router-link" v-bind:to="{ name: 'addReview', params: { officeId: office.officeId } }">
+    <router-link class= "router-link" id="add-reviews-button" v-bind:to="{ name: 'addReview', params: { officeId: office.officeId } }">
       Add Review
     </router-link>
   </div>
@@ -92,7 +92,6 @@ export default {
   padding-left: 10px;
 }
 
-
 .router-link {
   display: flex;
   flex-direction: column;
@@ -106,6 +105,10 @@ export default {
   padding: 4px;
   background-color: rgb(217, 217, 217);
   letter-spacing: .05rem
+}
+
+#add-reviews-button {
+  width: 86px;
 }
 
 .information-text {

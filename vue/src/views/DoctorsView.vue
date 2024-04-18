@@ -92,13 +92,13 @@ export default {
 }
 .office-images-row {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   padding-bottom: 10px;
 }
 
 img {
-  max-width: 250px;
-  margin: 20px;
+  max-width: 405px;
+  margin: 25px;
   border: rgb(229, 229, 229) solid 1px;
 }
 

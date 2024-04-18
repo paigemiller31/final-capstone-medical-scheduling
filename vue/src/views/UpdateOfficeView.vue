@@ -1,7 +1,7 @@
 <template>
     <body>
         <section id="registration-page">
-            <form class="signup-form">
+            <form class="signup-form" autocomplete="off">
 
                 <div class="form-body">
 
