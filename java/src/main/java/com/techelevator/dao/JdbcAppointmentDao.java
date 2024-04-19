@@ -251,7 +251,6 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setFirstName(rs.getString("first_name"));
         appointment.setLastName(rs.getString("last_name"));
 
-
         return appointment;
     }
 

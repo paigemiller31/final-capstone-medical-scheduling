@@ -95,7 +95,7 @@ export default {
 .router-link {
   display: flex;
   flex-direction: column;
-  justify-self: flex-end;
+  justify-items: flex-end;
   text-decoration: none;
   color: black;
   border: solid 1px rgb(190, 189, 189);
@@ -104,7 +104,7 @@ export default {
   text-align: center;
   padding: 4px;
   background-color: rgb(217, 217, 217);
-  letter-spacing: .05rem
+  letter-spacing: .05rem;
 }
 
 #add-reviews-button {

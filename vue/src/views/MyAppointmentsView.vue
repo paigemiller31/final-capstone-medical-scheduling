@@ -1,13 +1,24 @@
 <template>
-  <div>
-    
-    <div>
+  <div class="form-body">
+
+    <header class="appointment-header">Upcoming Appointments</header>
+
+    <div class="column-group">
+    <div class="column-names-row">
+    <div class="name">Name</div>
+    <div class="date">Date</div>
+    <div class="time">Time</div>
+    </div>
+    </div>
+
+    <div class="appointment-info">
       <appointment
         v-for="appointment in appointmentList"
         v-bind:key="appointment.appointmentId"
         v-bind:appointment="appointment"
       />
     </div>
+    <div class="courtesy-note" v-if="$store.state.currentRole === 'ROLE_USER'">Please call the office at which your appointment is scheduled if you need to cancel or reschedule.</div>
   </div>
 </template>
 
@@ -99,4 +110,83 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-body {
+    margin-top: 70px;
+    margin-bottom: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-right: 90px;
+    padding-left: 90px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    background-color: rgba(219, 219, 219, 0.5);
+}
+
+.appointment-header {
+  margin-bottom: 2rem;
+  font-weight: 100;
+  font-size: 22pt;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .01rem;
+}
+
+.column-group {
+  display: flex;
+  justify-content: center;
+}
+
+.column-names-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+    "name date time"
+  ;
+  margin-top: 50px;
+  text-transform: uppercase;
+  font-size: 20px;
+  width: 1000px;
+  padding: 10px;
+  border-bottom: rgb(0, 0, 0) 1px solid;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  grid-area: name;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  grid-area: date;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  grid-area: time;
+}
+
+.appointment-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.courtesy-note {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 10px;
+}
+</style>

@@ -101,6 +101,7 @@ body {
   width: 100vh;
   padding-left: 300px;
   padding-right: 300px;
+  padding-bottom: 40px;
 }
 
 .office-row {
