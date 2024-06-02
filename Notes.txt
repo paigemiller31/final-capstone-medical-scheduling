@@ -1,0 +1,123 @@
+Final Capstone
+
+
+- ERD diagram / data:
+	- Are there any many to many relationships / need for bridge tables?
+	- Should we have a "USER" table for patient and doctor (and delianate by role), or separate for each?
+		(as reference: Movie Database ERD)
+
+- Do we need third party API for:
+	- Calendar?
+	- Sending notifications - alerting doctor about appointment booking?
+
+
+
+
+
+TWO PARTS BANK END:
+- Database design
+- Build the API based on the database
+
+TWO PARTS FRONT END:
+- Consuming the API
+- Design the layout
+
+
+
+
+----[ for now, we will input doctors on the back end and "give them their username and password" ]
+
+----but, going forward, we could...
+----*** doctors can be given a token they can enter to be able to register as doctor
+----doctors have an NPI # (?) (some kind of ID associated with doctors)
+
+
+
+
+when a patient is scheduling an appointment (?)
+
+getOfficeInfoByDoctorId:
+SELECT office_name, address_line_1, address_line_2,
+    city, state, zip_code, phone_number, email 
+    FROM office 
+    INNER JOIN  doctor on  doctor.office_id = office.office_id
+    WHERE doctor.doctor_id = 3
+
+getOfficeList
+
+getDoctorsListByOfficeId
+
+
+
+
+
+
+users (table)
+user_id - pk
+username
+password_hash
+role
+
+patient (table)
+patient_id - pk fk (user_id)
+office_id - fk
+first name
+last name
+address line 1
+address line 2
+city
+state
+zip code
+phone number
+email address
+
+doctor (table)
+doctor_id - pk fk (user_id)
+office_id - fk
+first name
+last name
+specialization
+cost_per_hour
+
+office (table)
+office_id - pk
+doctor_id - fk
+office_name
+address
+phone number
+office hours
+review_id - fk
+
+appointment (table)
+appointment_id - pk
+patient_id - fk
+doctor_id - fk
+date
+time
+duration
+available - true/false?
+alert - true/false? ???????????????
+
+alert (table) ??? ^^^ or up there ???
+notification ???????????????
+
+reviews (table)
+review_id - pk
+office_id - fk
+review
+response
+
+
+
+
+
+For Patients:
+Effortless Scheduling: Find the right doctor, view their availability, and book appointments directly - all in one place.
+Improved Access to Care: Eliminate phone calls and schedule appointments at your convenience.
+
+For Doctors:
+Centralized Management: Manage your schedule seamlessly and receive real-time appointment notifications.
+Increased Patient Satisfaction: Offer convenient online booking, reducing phone traffic and wait times.
+
+Secure, efficient scheduling for doctors and patients. Sign up and simplify your healthcare experience today!
+
